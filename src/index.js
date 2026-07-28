@@ -1,3 +1,4 @@
 import "./styles.css";
+import ToDoTask from "./logic.js";
 
-console.log("Template working");
+console.log(new ToDoTask("Test").title);
