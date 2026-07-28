@@ -22,10 +22,12 @@ class ToDoTask {
 class ToDoList {
     #title;
     #tasks;
+    #id;
 
     constructor(title) {
         this.#title = title;
         this.#tasks = [];
+        this.#id = crypto.randomUUID();
     }
 
     get tasks() {
@@ -46,4 +48,29 @@ class ToDoList {
     }
 }
 
-export default ToDoList;
+class ToDoListContainer {
+    #lists;
+
+    constructor() {
+        this.#lists = [];
+    }
+
+    get lists() {
+        return this.#lists;
+    }
+
+    createList(title) {
+        this.#lists.push(new ToDoList(title));
+    }
+
+    removeList(listId) {
+        for (let index in this.#lists) {
+            if (this.#lists[index].id === listId) {
+                this.#lists.splice(index, 1);
+                return;
+            }
+        };
+    }
+}
+
+export default ToDoListContainer;
