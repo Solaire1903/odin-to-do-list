@@ -1,1 +1,1 @@
-Template repository for webpack based projects
+To-Do-List app for The Odin Project curriculum
