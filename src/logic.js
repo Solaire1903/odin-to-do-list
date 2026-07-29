@@ -71,7 +71,6 @@ class ToDoListContainer {
         for (let index in this.#lists) {
             if (this.#lists[index].id === listId) {
                 this.#lists.splice(index, 1);
-                console.log(`Test with ${listId} on Index ${index}`);
                 return;
             }
         };
