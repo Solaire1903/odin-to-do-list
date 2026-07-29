@@ -30,6 +30,10 @@ class ToDoList {
         this.#id = crypto.randomUUID();
     }
 
+    get title() {
+        return this.#title;
+    }
+
     get tasks() {
         return this.#tasks;
     }
