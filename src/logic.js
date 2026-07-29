@@ -73,4 +73,4 @@ class ToDoListContainer {
     }
 }
 
-export default ToDoListContainer;
+export default new ToDoListContainer();
