@@ -5,7 +5,7 @@
 }
 
 body {
-  min-height: 100vh;;
+  min-height: 100vh;
 
   display: grid;
   grid-template-rows: 1fr 10fr;
@@ -16,20 +16,36 @@ header {
   color: white;
   background-color: rebeccapurple;
 
-  display: grid;
-  place-content: center;
-
   grid-column: 1 / span 2;
+
+  display: flex;
+  align-items: center;
 }
 
 #sidebar {
   background-color: pink;
 
   grid-row: 2 / span 1;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#project-list {
+  list-style: none;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 #project-content {
   background-color: beige;
-  
+
   grid-row: 2 / span 1;
+}
+
+header, #sidebar {
+  padding: 20px;
 }
