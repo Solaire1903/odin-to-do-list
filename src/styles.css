@@ -6,4 +6,15 @@
 
 body {
   min-height: 100vh;;
+
+  display: grid;
+  grid-template-rows: 1fr 10fr;
+}
+
+header {
+  color: white;
+  background-color: rebeccapurple;
+
+  display: grid;
+  place-content: center;
 }
