@@ -32,15 +32,6 @@ header {
   gap: 20px;
 }
 
-#project-list,
-#task-list {
-  list-style: none;
-
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
 #project-content {
   background-color: beige;
 
@@ -56,4 +47,14 @@ header,
 #sidebar,
 #project-content {
   padding: 20px;
+}
+
+#project-list,
+#task-list {
+  width: 100%;
+  list-style: none;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
