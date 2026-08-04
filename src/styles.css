@@ -32,7 +32,8 @@ header {
   gap: 20px;
 }
 
-#project-list {
+#project-list,
+#task-list {
   list-style: none;
 
   display: flex;
@@ -44,8 +45,15 @@ header {
   background-color: beige;
 
   grid-row: 2 / span 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
 }
 
-header, #sidebar {
+header,
+#sidebar,
+#project-content {
   padding: 20px;
 }
