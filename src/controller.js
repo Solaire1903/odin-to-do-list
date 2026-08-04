@@ -1,17 +1,17 @@
-import listContainer from "./logic.js";
+import projectContainer from "./logic.js";
 import view from "./view.js";
 
 function loadApp() {
-    listContainer.createList("List 1");
-    listContainer.createList("List 2");
-    listContainer.createList("List 3");
+    projectContainer.createProject("Project 1");
+    projectContainer.createProject("Project 2");
+    projectContainer.createProject("Project 3");
 
-    listContainer.lists[0].createTask("T1");
-    listContainer.lists[0].createTask("T2");
-    listContainer.lists[0].createTask("T3");
+    projectContainer.projects[0].createTask("T1");
+    projectContainer.projects[0].createTask("T2");
+    projectContainer.projects[0].createTask("T3");
 
-    view.renderLists(listContainer.lists);
-    view.renderTasks(listContainer.lists[0].tasks);
+    view.renderProjects(projectContainer.projects);
+    view.renderTasks(projectContainer.projects[0].tasks);
 }
 
 export default loadApp;

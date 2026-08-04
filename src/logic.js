@@ -23,7 +23,7 @@ class ToDoTask {
 
 }
 
-class ToDoList {
+class ToDoProject {
     #title;
     #tasks;
     #id;
@@ -60,29 +60,29 @@ class ToDoList {
     }
 }
 
-class ToDoListContainer {
-    #lists;
+class ToDoProjectContainer {
+    #projects;
 
     constructor() {
-        this.#lists = [];
+        this.#projects = [];
     }
 
-    get lists() {
-        return this.#lists;
+    get projects() {
+        return this.#projects;
     }
 
-    createList(title) {
-        this.#lists.push(new ToDoList(title));
+    createProject(title) {
+        this.#projects.push(new ToDoProject(title));
     }
 
-    removeList(listId) {
-        for (let index in this.#lists) {
-            if (this.#lists[index].id === listId) {
-                this.#lists.splice(index, 1);
+    removeProject(projectId) {
+        for (let index in this.#projects) {
+            if (this.#projects[index].id === projectId) {
+                this.#projects.splice(index, 1);
                 return;
             }
         };
     }
 }
 
-export default new ToDoListContainer();
+export default new ToDoProjectContainer();

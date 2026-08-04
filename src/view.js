@@ -1,11 +1,11 @@
 class View {
     #container = document.querySelector(".container");
 
-    renderLists(lists) {
-        for (const list of lists) {
-            const listElement = document.createElement("p");
-            listElement.textContent = list.title;
-            this.#container.appendChild(listElement);
+    renderProjects(projects) {
+        for (const project of projects) {
+            const projectElement = document.createElement("p");
+            projectElement.textContent = project.title;
+            this.#container.appendChild(projectElement);
         }
     }
 
