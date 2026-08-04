@@ -9,9 +9,6 @@ function loadApp() {
     projectContainer.projects[0].createTask("T1");
     projectContainer.projects[0].createTask("T2");
     projectContainer.projects[0].createTask("T3");
-
-    view.renderProjects(projectContainer.projects);
-    view.renderTasks(projectContainer.projects[0].tasks);
 }
 
 export default loadApp;
