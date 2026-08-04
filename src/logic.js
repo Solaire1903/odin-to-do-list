@@ -56,7 +56,7 @@ class ToDoProject {
                 this.#tasks.splice(index, 1);
                 return;
             }
-        };
+        }
     }
 }
 
@@ -81,7 +81,7 @@ class ToDoProjectContainer {
                 this.#projects.splice(index, 1);
                 return;
             }
-        };
+        }
     }
 }
 
