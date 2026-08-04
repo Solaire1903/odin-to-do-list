@@ -1,19 +1,21 @@
 class View {
-    #container = document.querySelector(".container");
-
     renderProjects(projects) {
+        const projectList = document.getElementById("project-list")
+
         for (const project of projects) {
-            const projectElement = document.createElement("p");
+            const projectElement = document.createElement("li");
             projectElement.textContent = project.title;
-            this.#container.appendChild(projectElement);
+            projectList.appendChild(projectElement);
         }
     }
 
     renderTasks(tasks) {
+        const taskList = document.getElementById("task-list");
+
         for (const task of tasks) {
-            const taskElement = document.createElement("p");
+            const taskElement = document.createElement("li");
             taskElement.textContent = task.title;
-            this.#container.appendChild(taskElement);
+            taskList.appendChild(taskElement);
         }
     }
 }
