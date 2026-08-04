@@ -4,6 +4,7 @@ class View {
 
         for (const project of projects) {
             const projectElement = document.createElement("li");
+            projectElement.classList.add("project");
             projectElement.textContent = project.title;
             projectList.appendChild(projectElement);
         }
@@ -14,6 +15,7 @@ class View {
 
         for (const task of tasks) {
             const taskElement = document.createElement("li");
+            taskElement.classList.add("task");
             taskElement.textContent = task.title;
             taskList.appendChild(taskElement);
         }
