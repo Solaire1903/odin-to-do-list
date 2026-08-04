@@ -9,6 +9,7 @@ body {
 
   display: grid;
   grid-template-rows: 1fr 10fr;
+  grid-template-columns: 1fr 5fr;
 }
 
 header {
@@ -17,4 +18,18 @@ header {
 
   display: grid;
   place-content: center;
+
+  grid-column: 1 / span 2;
+}
+
+#sidebar {
+  background-color: pink;
+
+  grid-row: 2 / span 1;
+}
+
+#project-content {
+  background-color: beige;
+  
+  grid-row: 2 / span 1;
 }
