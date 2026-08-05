@@ -33,6 +33,27 @@ header {
   gap: 20px;
 }
 
+.project-card {
+  padding: 5px;
+  color: white;
+  background-color: rebeccapurple;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.project-card>div {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.project-card>div>img {
+  height: 20px;
+  width: auto;
+}
+
 #project-content {
   background-color: beige;
 
@@ -58,13 +79,4 @@ header,
   display: flex;
   flex-direction: column;
   gap: 10px;
-}
-
-.project-card {
-  padding: 5px;
-  color: white;
-  background-color: rebeccapurple;
-
-  display: flex;
-  justify-content: space-between;
 }
