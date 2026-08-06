@@ -38,6 +38,10 @@ button {
   gap: 20px;
 }
 
+li + li {
+  margin-top: 10px;
+}
+
 .project-card {
   padding: 5px;
   color: white;
