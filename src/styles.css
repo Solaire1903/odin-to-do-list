@@ -28,7 +28,7 @@ button {
 }
 
 #sidebar {
-  min-width: 200px;
+  min-width: 250px;
   background-color: pink;
 
   grid-row: 2 / span 1;
