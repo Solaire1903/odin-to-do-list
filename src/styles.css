@@ -66,6 +66,7 @@ button {
 }
 
 #project-content {
+  min-width: 600px;
   background-color: beige;
 
   grid-row: 2 / span 1;
@@ -76,6 +77,51 @@ button {
   gap: 15px;
 }
 
+#task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.task-card {
+  min-width: 400px;
+  padding: 10px;
+  background-color: pink;
+
+  display: grid;
+  grid-template-columns: 40px 5fr 2fr;
+  grid-template-rows: 15px 15px;
+  gap: 10px;
+}
+
+.task-checkbox {
+  background-color: white;
+
+  grid-row: 1 / span 2;
+}
+
+.task-due-date {
+  grid-column: 2 / span 1;
+}
+
+.task-icon-area {
+  grid-column: 3 /span 1;
+  grid-row: 1 / span 2;
+
+  display: flex;
+  justify-content: end;
+  gap: 10px;
+}
+
+.task-icon-area>button {
+  background-color: pink;
+}
+
+.task-icon-area>button>img {
+  height: 30px;
+  width: auto;
+}
+
 header,
 #sidebar,
 #project-content {
@@ -84,7 +130,6 @@ header,
 
 #project-list,
 #task-list {
-  width: 100%;
   list-style: none;
 
   display: flex;
