@@ -95,9 +95,13 @@ button {
 }
 
 .task-checkbox {
+  height: 30px;
+  width: 30px;
   background-color: white;
 
   grid-row: 1 / span 2;
+
+  align-self: center;
 }
 
 .task-due-date {
