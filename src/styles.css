@@ -77,12 +77,6 @@ button {
   gap: 15px;
 }
 
-#task-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
 .task-card {
   min-width: 500px;
   padding: 10px;
