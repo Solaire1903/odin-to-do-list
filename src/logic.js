@@ -17,6 +17,10 @@ class ToDoTask {
         return this.#title;
     }
 
+    get dueDate() {
+        return this.#dueDate;
+    }
+
     get id() {
         return this.#id;
     }
