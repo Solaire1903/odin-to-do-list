@@ -112,6 +112,14 @@ class View {
         editButtons.forEach((button) => button.addEventListener("click", editFunction));
         deleteButtons.forEach((button) => button.addEventListener("click", deleteFunction));
     }
+
+    applyInitialEventListeners(addProjectFunction, addTaskFunction) {
+        const addProjectButton = document.getElementById("add-project-button");
+        const addTaskButton = document.getElementById("add-task-button");
+
+        addProjectButton.addEventListener("click", addProjectFunction);
+        addTaskButton.addEventListener("click", addTaskFunction);
+    }
 }
 
 export default new View();
