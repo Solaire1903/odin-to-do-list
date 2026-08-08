@@ -12,6 +12,9 @@ function loadApp() {
 
     view.renderProjects(projectContainer.projects);
     view.renderTasks(projectContainer.projects[0].tasks);
+
+    view.applyTaskEventListeners(() => console.log("EditTestT"), () => console.log("DeleteTestT"));
+    view.applyProjectEventListeners(() => console.log("EditTestP"), () => console.log("DeleteTestP"));
 }
 
 export default loadApp;

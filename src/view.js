@@ -90,6 +90,28 @@ class View {
             editButton.appendChild(editButtonImage);
         }
     }
+
+    applyTaskEventListeners(editFunction, deleteFunction) {
+        const editButtons = document.querySelectorAll(".task-edit-button");
+        const deleteButtons = document.querySelectorAll(".task-delete-button");
+
+        editButtons.forEach((button) => button.removeEventListener("click", editFunction));
+        deleteButtons.forEach((button) => button.removeEventListener("click", deleteFunction));
+
+        editButtons.forEach((button) => button.addEventListener("click", editFunction));
+        deleteButtons.forEach((button) => button.addEventListener("click", deleteFunction));
+    }
+
+    applyProjectEventListeners(editFunction, deleteFunction) {
+        const editButtons = document.querySelectorAll(".project-edit-button");
+        const deleteButtons = document.querySelectorAll(".project-delete-button");
+
+        editButtons.forEach((button) => button.removeEventListener("click", editFunction));
+        deleteButtons.forEach((button) => button.removeEventListener("click", deleteFunction));
+
+        editButtons.forEach((button) => button.addEventListener("click", editFunction));
+        deleteButtons.forEach((button) => button.addEventListener("click", deleteFunction));
+    }
 }
 
 export default new View();
