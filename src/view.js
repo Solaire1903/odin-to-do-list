@@ -4,6 +4,7 @@ import trashCanSVG from "./img/trash-can.svg"
 class View {
     renderProjects(projects) {
         const projectList = document.getElementById("project-list")
+        projectList.innerHTML = "";
 
         for (const project of projects) {
             const listElement = document.createElement("li");
@@ -40,6 +41,7 @@ class View {
 
     renderTasks(tasks) {
         const taskList = document.getElementById("task-list");
+        taskList.innerHTML = "";
 
         for (const task of tasks) {
             const listElement = document.createElement("li");
