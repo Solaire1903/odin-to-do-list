@@ -22,9 +22,11 @@ class View {
             projectCard.appendChild(buttonContainer);
 
             const editButton = document.createElement("button");
+            editButton.classList.add("project-edit-button");
             buttonContainer.appendChild(editButton);
 
             const deleteButton = document.createElement("button");
+            deleteButton.classList.add("project-delete-button");
             buttonContainer.appendChild(deleteButton);
 
             const deleteButtonImage = document.createElement("img");
@@ -70,9 +72,11 @@ class View {
             taskCard.appendChild(taskIconArea);
 
             const editButton = document.createElement("button");
+            editButton.classList.add("task-edit-button");
             taskIconArea.appendChild(editButton);
 
             const deleteButton = document.createElement("button");
+            deleteButton.classList.add("task-delete-button");
             taskIconArea.appendChild(deleteButton);
 
             const deleteButtonImage = document.createElement("img");
