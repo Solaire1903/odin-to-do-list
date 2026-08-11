@@ -116,14 +116,27 @@ class View {
         deleteButtons.forEach((button) => button.addEventListener("click", deleteFunction));
     }
 
-    applyInitialEventListeners() {
+    applyInitialEventListeners(handleConfirmNewProject) {
         const addProjectButton = document.getElementById("add-project-button");
+        const newProjectWindow = document.getElementById("new-project-window");
+        const newProjectForm = document.getElementById("new-project-form");
         const addTaskButton = document.getElementById("add-task-button");
 
         addProjectButton.addEventListener("click", () => {
-            document.getElementById("new-project-window").showModal();
+            newProjectWindow.showModal();
         });
-        addTaskButton.addEventListener("click", addTaskFunction);
+
+        newProjectForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+            const projectNameInput = document.getElementById("project-name-input");
+
+            handleConfirmNewProject(projectNameInput.value);
+
+            projectNameInput.value = "";
+            newProjectWindow.close();
+        })
+
+        //addTaskButton.addEventListener("click", addTaskFunction);
     }
 }
 

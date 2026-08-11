@@ -1,6 +1,11 @@
 import projectContainer from "./logic.js";
 import view from "./view.js";
 
+function handleConfirmNewProject(projectName) {
+    projectContainer.createProject(projectName);
+    view.renderProjects(projectContainer.projects);
+}
+
 function loadApp() {
     projectContainer.createProject("Project 1");
     projectContainer.createProject("Project 2");
@@ -15,7 +20,7 @@ function loadApp() {
 
     view.applyTaskEventListeners(() => console.log("CheckboxTest"), () => console.log("EditTestT"), () => console.log("DeleteTestT"));
     view.applyProjectEventListeners(() => console.log("EditTestP"), () => console.log("DeleteTestP"));
-    view.applyInitialEventListeners();
+    view.applyInitialEventListeners(handleConfirmNewProject);
 }
 
 export default loadApp;
