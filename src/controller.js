@@ -1,4 +1,4 @@
-import projectContainer from "./logic.js";
+import model from "./model.js";
 import view from "./view.js";
 
 function handleConfirmNewProject(projectName) {
