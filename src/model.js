@@ -89,4 +89,16 @@ class ToDoProjectContainer {
     }
 }
 
-export default new ToDoProjectContainer();
+class Model {
+    #projectContainer
+
+    constructor() {
+        this.#projectContainer = new ToDoProjectContainer();
+    }
+
+    get projectContainer() {
+        return this.#projectContainer;
+    }
+}
+
+export default new Model();

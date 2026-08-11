@@ -1,6 +1,8 @@
 import model from "./model.js";
 import view from "./view.js";
 
+const projectContainer = model.projectContainer;
+
 function handleConfirmNewProject(projectName) {
     projectContainer.createProject(projectName);
     view.renderProjects(projectContainer.projects);
