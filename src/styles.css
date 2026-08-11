@@ -27,6 +27,16 @@ button {
   border: none;
 }
 
+dialog {
+  margin: auto;
+  padding: 20px;
+}
+
+dialog::backdrop {
+  background-color: black;
+  opacity: 30%;
+}
+
 #sidebar {
   min-width: 250px;
   background-color: pink;
@@ -38,7 +48,7 @@ button {
   gap: 20px;
 }
 
-li + li {
+li+li {
   margin-top: 10px;
 }
 
