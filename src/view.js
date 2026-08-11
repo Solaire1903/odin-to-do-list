@@ -91,13 +91,16 @@ class View {
         }
     }
 
-    applyTaskEventListeners(editFunction, deleteFunction) {
+    applyTaskEventListeners(checkboxFunction, editFunction, deleteFunction) {
+        const checkboxButtons = document.querySelectorAll(".task-checkbox");
         const editButtons = document.querySelectorAll(".task-edit-button");
         const deleteButtons = document.querySelectorAll(".task-delete-button");
 
+        checkboxButtons.forEach((button) => button.removeEventListener("click", checkboxFunction));
         editButtons.forEach((button) => button.removeEventListener("click", editFunction));
         deleteButtons.forEach((button) => button.removeEventListener("click", deleteFunction));
 
+        checkboxButtons.forEach((button) => button.addEventListener("click", checkboxFunction));
         editButtons.forEach((button) => button.addEventListener("click", editFunction));
         deleteButtons.forEach((button) => button.addEventListener("click", deleteFunction));
     }

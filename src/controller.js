@@ -13,7 +13,7 @@ function loadApp() {
     view.renderProjects(projectContainer.projects);
     view.renderTasks(projectContainer.projects[0].tasks);
 
-    view.applyTaskEventListeners(() => console.log("EditTestT"), () => console.log("DeleteTestT"));
+    view.applyTaskEventListeners(() => console.log("CheckboxTest"), () => console.log("EditTestT"), () => console.log("DeleteTestT"));
     view.applyProjectEventListeners(() => console.log("EditTestP"), () => console.log("DeleteTestP"));
     view.applyInitialEventListeners(() => console.log("AddPTest"), () => console.log("AddTTest"));
 }
