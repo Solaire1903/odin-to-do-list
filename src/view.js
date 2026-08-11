@@ -116,11 +116,13 @@ class View {
         deleteButtons.forEach((button) => button.addEventListener("click", deleteFunction));
     }
 
-    applyInitialEventListeners(addProjectFunction, addTaskFunction) {
+    applyInitialEventListeners() {
         const addProjectButton = document.getElementById("add-project-button");
         const addTaskButton = document.getElementById("add-task-button");
 
-        addProjectButton.addEventListener("click", addProjectFunction);
+        addProjectButton.addEventListener("click", () => {
+            document.getElementById("new-project-window").showModal();
+        });
         addTaskButton.addEventListener("click", addTaskFunction);
     }
 }

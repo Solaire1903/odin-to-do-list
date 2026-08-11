@@ -15,9 +15,7 @@ function loadApp() {
 
     view.applyTaskEventListeners(() => console.log("CheckboxTest"), () => console.log("EditTestT"), () => console.log("DeleteTestT"));
     view.applyProjectEventListeners(() => console.log("EditTestP"), () => console.log("DeleteTestP"));
-    view.applyInitialEventListeners(() => console.log("AddPTest"), () => console.log("AddTTest"));
-
-    document.getElementById("new-project-window").showModal();
+    view.applyInitialEventListeners();
 }
 
 export default loadApp;
