@@ -79,6 +79,28 @@ li+li {
   width: auto;
 }
 
+#new-project-window>div {
+  display: flex;
+  flex-direction: column;
+}
+
+#new-project-window-close-button {
+  display: flex;
+
+  align-self: end;
+}
+
+#new-project-window-close-button>img {
+  height: 20px;
+  width: auto;
+}
+
+#new-project-form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
 #project-content {
   min-width: 600px;
   background-color: beige;
