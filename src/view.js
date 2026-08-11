@@ -53,7 +53,7 @@ class View {
             taskCard.classList.add("task-card");
             listElement.appendChild(taskCard);
 
-            const taskCheckbox = document.createElement("div");
+            const taskCheckbox = document.createElement("button");
             taskCheckbox.classList.add("task-checkbox");
             taskCard.appendChild(taskCheckbox);
 
