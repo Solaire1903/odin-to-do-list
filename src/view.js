@@ -116,7 +116,7 @@ class View {
         deleteButtons.forEach((button) => button.addEventListener("click", deleteFunction));
     }
 
-    applyInitialEventListeners(handleConfirmNewProject) {
+    applyInitialEventListeners(confirmNewProject) {
         const addProjectButton = document.getElementById("add-project-button");
         const newProjectWindow = document.getElementById("new-project-window");
         const newProjectForm = document.getElementById("new-project-form");
@@ -130,7 +130,7 @@ class View {
             event.preventDefault();
             const projectNameInput = document.getElementById("project-name-input");
 
-            handleConfirmNewProject(projectNameInput.value);
+            confirmNewProject(projectNameInput.value);
 
             projectNameInput.value = "";
             newProjectWindow.close();
