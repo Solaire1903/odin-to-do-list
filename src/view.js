@@ -118,17 +118,25 @@ class View {
 
     applyInitialEventListeners(confirmNewProject) {
         const addProjectButton = document.getElementById("add-project-button");
+
         const newProjectWindow = document.getElementById("new-project-window");
+        const newProjectWindowCloseButton = document.getElementById("new-project-window-close-button");
         const newProjectForm = document.getElementById("new-project-form");
+        const projectNameInput = document.getElementById("project-name-input");
+
         const addTaskButton = document.getElementById("add-task-button");
 
         addProjectButton.addEventListener("click", () => {
             newProjectWindow.showModal();
         });
 
+        newProjectWindowCloseButton.addEventListener("click", () => {
+            projectNameInput.value = "";
+            newProjectWindow.close();
+        })
+
         newProjectForm.addEventListener("submit", (event) => {
             event.preventDefault();
-            const projectNameInput = document.getElementById("project-name-input");
 
             confirmNewProject(projectNameInput.value);
 
