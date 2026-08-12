@@ -143,13 +143,16 @@ class View {
      */
     applyInitialEventListeners(handleNewProject) {
         const addProjectButton = document.getElementById("add-project-button");
+
         const newProjectWindow = document.getElementById("new-project-window");
         const newProjectWindowCloseButton = document.getElementById("new-project-window-close-button");
         const newProjectForm = document.getElementById("new-project-form");
         const projectNameInput = document.getElementById("project-name-input");
 
         const addTaskButton = document.getElementById("add-task-button");
+
         const newTaskWindow = document.getElementById("new-task-window");
+        const newTaskWindowCloseButton = document.getElementById("new-task-window-close-button");
 
         addProjectButton.addEventListener("click", () => {
             newProjectWindow.showModal();
@@ -171,6 +174,10 @@ class View {
 
         addTaskButton.addEventListener("click", () => {
             newTaskWindow.showModal();
+        })
+
+        newTaskWindowCloseButton.addEventListener("click", () => {
+            newTaskWindow.close();
         })
     }
 }
