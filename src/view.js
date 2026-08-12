@@ -147,14 +147,14 @@ class View {
         const newProjectWindow = document.getElementById("new-project-window");
         const newProjectWindowCloseButton = document.getElementById("new-project-window-close-button");
         const newProjectForm = document.getElementById("new-project-form");
-        const projectNameInput = document.getElementById("project-name-input");
+        const projectTitleInput = document.getElementById("project-title-input");
 
         const addTaskButton = document.getElementById("add-task-button");
 
         const newTaskWindow = document.getElementById("new-task-window");
         const newTaskWindowCloseButton = document.getElementById("new-task-window-close-button");
         const newTaskForm = document.getElementById("new-task-form");
-        const taskNameInput = document.getElementById("task-name-input");
+        const taskTitleInput = document.getElementById("task-title-input");
         const taskDescriptionInput = document.getElementById("task-description-input");
         const taskDueDateInput = document.getElementById("task-due-date-input");
         const taskPriorityInput = document.getElementById("task-priority-input");
@@ -164,16 +164,16 @@ class View {
         });
 
         newProjectWindowCloseButton.addEventListener("click", () => {
-            projectNameInput.value = "";
+            projectTitleInput.value = "";
             newProjectWindow.close();
         })
 
         newProjectForm.addEventListener("submit", (event) => {
             event.preventDefault();
 
-            handleNewProject(projectNameInput.value);
+            handleNewProject(projectTitleInput.value);
 
-            projectNameInput.value = "";
+            projectTitleInput.value = "";
             newProjectWindow.close();
         })
 
@@ -182,7 +182,19 @@ class View {
         })
 
         newTaskWindowCloseButton.addEventListener("click", () => {
-            taskNameInput.value = "";
+            taskTitleInput.value = "";
+            taskDescriptionInput.value = "";
+            taskDueDateInput.value = "";
+            taskPriorityInput.value = "";
+            newTaskWindow.close();
+        })
+
+        newTaskForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            //Add function
+
+            taskTitleInput.value = "";
             taskDescriptionInput.value = "";
             taskDueDateInput.value = "";
             taskPriorityInput.value = "";

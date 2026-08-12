@@ -5,10 +5,10 @@ const projectContainer = model.projectContainer;
 
 /**
  * Adds a new project to the Model and updates the View
- * @param {string} projectName The name of the new project to be created
+ * @param {string} title The title of the new project to be created
  */
-function handleNewProject(projectName) {
-    projectContainer.createProject(projectName);
+function handleNewProject(title) {
+    projectContainer.createProject(title);
     view.renderProjects(projectContainer.projects);
 }
 
