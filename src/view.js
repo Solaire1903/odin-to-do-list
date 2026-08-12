@@ -2,6 +2,10 @@ import pencilSVG from "./img/pencil.svg"
 import trashCanSVG from "./img/trash-can.svg"
 
 class View {
+    /**
+     * Renders projects from an array to the site
+     * @param {Array.<ToDoProject>} projects The array of projects to be rendered
+     */
     renderProjects(projects) {
         const projectList = document.getElementById("project-list")
         projectList.innerHTML = "";
@@ -41,6 +45,10 @@ class View {
         }
     }
 
+    /**
+     * Renders tasks from an array to the site
+     * @param {Array.<ToDoTask>} tasks The array of tasks to be rendered
+     */
     renderTasks(tasks) {
         const taskList = document.getElementById("task-list");
         taskList.innerHTML = "";
@@ -91,6 +99,12 @@ class View {
         }
     }
 
+    /**
+     * Applies the event listeners for all current task cards
+     * @param {function} checkboxFunction Handles Checkbox functionality
+     * @param {function} editFunction Handles Edit functionality
+     * @param {function} deleteFunction Handles Delete functionality
+     */
     applyTaskEventListeners(checkboxFunction, editFunction, deleteFunction) {
         const checkboxButtons = document.querySelectorAll(".task-checkbox");
         const editButtons = document.querySelectorAll(".task-edit-button");
@@ -105,6 +119,11 @@ class View {
         deleteButtons.forEach((button) => button.addEventListener("click", deleteFunction));
     }
 
+    /**
+     * Applies the event listeners for all current project cards
+     * @param {function} editFunction Handles Edit functionality
+     * @param {function} deleteFunction Handles Delete functionality
+     */
     applyProjectEventListeners(editFunction, deleteFunction) {
         const editButtons = document.querySelectorAll(".project-edit-button");
         const deleteButtons = document.querySelectorAll(".project-delete-button");
@@ -116,6 +135,10 @@ class View {
         deleteButtons.forEach((button) => button.addEventListener("click", deleteFunction));
     }
 
+    /**
+     * Applies all the initial event listeners on startup
+     * @param {function} handleNewProject Handles functionality for creating a new Project
+     */
     applyInitialEventListeners(handleNewProject) {
         const addProjectButton = document.getElementById("add-project-button");
 
@@ -143,8 +166,6 @@ class View {
             projectNameInput.value = "";
             newProjectWindow.close();
         })
-
-        //addTaskButton.addEventListener("click", addTaskFunction);
     }
 }
 

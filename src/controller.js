@@ -3,11 +3,18 @@ import view from "./view.js";
 
 const projectContainer = model.projectContainer;
 
+/**
+ * Adds a new project to the Model and updates the View
+ * @param {string} projectName The name of the new project to be created
+ */
 function handleNewProject(projectName) {
     projectContainer.createProject(projectName);
     view.renderProjects(projectContainer.projects);
 }
 
+/**
+ * Loads the app on initial startup
+ */
 function loadApp() {
     projectContainer.createProject("Project 1");
     projectContainer.createProject("Project 2");
