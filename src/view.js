@@ -16,6 +16,7 @@ class View {
 
             const projectCard = document.createElement("div");
             projectCard.classList.add("project-card");
+            projectCard.dataset.id = project.id;
             listElement.appendChild(projectCard);
 
             const projectTitle = document.createElement("p");
