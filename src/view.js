@@ -60,6 +60,7 @@ class View {
 
             const taskCard = document.createElement("div");
             taskCard.classList.add("task-card");
+            taskCard.dataset.id = task.id;
             listElement.appendChild(taskCard);
 
             const taskCheckbox = document.createElement("button");
