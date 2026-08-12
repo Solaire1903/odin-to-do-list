@@ -3,7 +3,7 @@ import view from "./view.js";
 
 const projectContainer = model.projectContainer;
 
-function confirmNewProject(projectName) {
+function handleNewProject(projectName) {
     projectContainer.createProject(projectName);
     view.renderProjects(projectContainer.projects);
 }
@@ -22,7 +22,7 @@ function loadApp() {
 
     view.applyTaskEventListeners(() => console.log("CheckboxTest"), () => console.log("EditTestT"), () => console.log("DeleteTestT"));
     view.applyProjectEventListeners(() => console.log("EditTestP"), () => console.log("DeleteTestP"));
-    view.applyInitialEventListeners(confirmNewProject);
+    view.applyInitialEventListeners(handleNewProject);
 }
 
 export default loadApp;
