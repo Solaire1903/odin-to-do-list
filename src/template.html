@@ -40,6 +40,29 @@
 
     <button id="add-task-button">+ Add Task</button>
   </div>
+
+  <dialog id="new-task-window">
+    <div>
+      <button id="new-task-window-close-button"><img src="./img/close.svg" alt="Close"></button>
+
+      <form action="" method="get" id="new-task-form">
+        <label for="task-name-input">Task Name:</label>
+        <input type="text" id="task-name-input" required autofocus>
+
+        <label for="task-description-input">Description:</label>
+        <textarea id="task-description-input"></textarea>
+
+        <label for="task-due-date-input">Due Date:</label>
+        <input type="text" id="task-due-date-input">
+
+        <label for="task-priority-input">Priority:</label>
+        <input type="text" id="task-priority-input">
+
+        <button type="submit" id="confirm-new-task-button">Confirm</button>
+      </form>
+    </div>
+  </dialog>
+
 </body>
 
 </html>

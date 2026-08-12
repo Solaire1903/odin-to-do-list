@@ -37,6 +37,28 @@ dialog::backdrop {
   opacity: 30%;
 }
 
+dialog>div {
+  display: flex;
+  flex-direction: column;
+}
+
+dialog>div>button {
+  display: flex;
+
+  align-self: end;
+}
+
+dialog>div>button>img {
+  height: 20px;
+  width: auto;
+}
+
+dialog>div>form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
 #sidebar {
   min-width: 250px;
   background-color: pink;
@@ -77,28 +99,6 @@ li+li {
 .project-card>div>button>img {
   height: 20px;
   width: auto;
-}
-
-#new-project-window>div {
-  display: flex;
-  flex-direction: column;
-}
-
-#new-project-window-close-button {
-  display: flex;
-
-  align-self: end;
-}
-
-#new-project-window-close-button>img {
-  height: 20px;
-  width: auto;
-}
-
-#new-project-form {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
 }
 
 #project-content {
