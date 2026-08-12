@@ -153,6 +153,11 @@ class View {
 
         const newTaskWindow = document.getElementById("new-task-window");
         const newTaskWindowCloseButton = document.getElementById("new-task-window-close-button");
+        const newTaskForm = document.getElementById("new-task-form");
+        const taskNameInput = document.getElementById("task-name-input");
+        const taskDescriptionInput = document.getElementById("task-description-input");
+        const taskDueDateInput = document.getElementById("task-due-date-input");
+        const taskPriorityInput = document.getElementById("task-priority-input");
 
         addProjectButton.addEventListener("click", () => {
             newProjectWindow.showModal();
@@ -177,6 +182,10 @@ class View {
         })
 
         newTaskWindowCloseButton.addEventListener("click", () => {
+            taskNameInput.value = "";
+            taskDescriptionInput.value = "";
+            taskDueDateInput.value = "";
+            taskPriorityInput.value = "";
             newTaskWindow.close();
         })
     }
