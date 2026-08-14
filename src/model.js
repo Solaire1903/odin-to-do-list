@@ -105,6 +105,10 @@ class ToDoProjectContainer {
         return this.#projects;
     }
 
+    get activeProject() {
+        return this.#activeProject;
+    }
+
     set activeProject(activeProject) {
         this.#activeProject = activeProject;
     }
