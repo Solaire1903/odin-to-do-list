@@ -138,12 +138,7 @@ class ToDoProjectContainer {
      * @param {string} projectId The id of the project to be removed
      */
     removeProject(projectId) {
-        for (let index in this.#projects) {
-            if (this.#projects[index].id === projectId) {
-                this.#projects.splice(index, 1);
-                return;
-            }
-        }
+        this.#projects.splice(this.getProjectIndexbyId(projectId), 1);
     }
 }
 
