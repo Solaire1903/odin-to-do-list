@@ -119,18 +119,18 @@ class ToDoProjectContainer {
 
     /**
      * 
-     * @param {string} projectId The id of the project to find
-     * @returns The project object with the given id,
-     * null if the project is not in the array
+     * @param {string} projectId The id of the project to find the index for
+     * @returns The index of the project with the given id,
+     * -1 if the project is not in the array
      */
-    getProjectbyId(projectId) {
-        for (const project of this.#projects) {
-            if (project.id === projectId) {
-                return project;
+    getProjectIndexbyId(projectId) {
+        for (let index in this.#projects) {
+            if (this.#projects[index].id === projectId) {
+                return index;
             }
         }
 
-        return null;
+        return -1;
     }
 
     /**
