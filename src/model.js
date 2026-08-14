@@ -95,6 +95,7 @@ class ToDoProject {
  */
 class ToDoProjectContainer {
     #projects;
+    #activeProject;
 
     constructor() {
         this.#projects = [];
@@ -102,6 +103,10 @@ class ToDoProjectContainer {
 
     get projects() {
         return this.#projects;
+    }
+
+    set activeProject(activeProject) {
+        this.#activeProject = activeProject;
     }
 
     /**
