@@ -21,6 +21,7 @@ function handleNewProject(title) {
 function handleActiveProject(activeProjectId) {
     projectContainer.activeProject = projects[projectContainer.getProjectIndexbyId(activeProjectId)];
 
+    view.renderActiveProjectTitle(projectContainer.activeProject.title);
     view.renderTasks(projectContainer.activeProject.tasks);
     view.applyTaskEventListeners(() => console.log("CheckboxTest"), () => console.log("EditTestT"), () => console.log("DeleteTestT"));
 }
@@ -29,6 +30,8 @@ function handleActiveProject(activeProjectId) {
  * Loads the app on initial startup
  */
 function loadApp() {
+    view.applyInitialEventListeners(handleNewProject);
+
     projectContainer.createProject("Project 1");
     projectContainer.createProject("Project 2");
     projectContainer.createProject("Project 3");
@@ -40,10 +43,11 @@ function loadApp() {
     view.renderProjects(projects);
     view.applyProjectEventListeners(handleActiveProject, () => console.log("EditTestP"), () => console.log("DeleteTestP"));
 
-    view.renderTasks(projects[0].tasks);
-    view.applyTaskEventListeners(() => console.log("CheckboxTest"), () => console.log("EditTestT"), () => console.log("DeleteTestT"));
+    projectContainer.activeProject = projects[0];
 
-    view.applyInitialEventListeners(handleNewProject);
+    view.renderActiveProjectTitle(projectContainer.activeProject.title);
+    view.renderTasks(projectContainer.activeProject.tasks);
+    view.applyTaskEventListeners(() => console.log("CheckboxTest"), () => console.log("EditTestT"), () => console.log("DeleteTestT"));
 }
 
 export default loadApp;

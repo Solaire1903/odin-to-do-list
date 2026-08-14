@@ -47,6 +47,16 @@ class View {
     }
 
     /**
+     * Renders a given title above the task list
+     * @param {string} title The title to render
+     */
+    renderActiveProjectTitle(title) {
+        const activeProjectTitle = document.getElementById("active-project-title");
+
+        activeProjectTitle.textContent = title;
+    }
+
+    /**
      * Renders tasks from an array to the site
      * @param {Array.<ToDoTask>} tasks The array of tasks to be rendered
      */
