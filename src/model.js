@@ -118,6 +118,22 @@ class ToDoProjectContainer {
     }
 
     /**
+     * 
+     * @param {string} projectId The id of the project to find
+     * @returns The project object with the given id,
+     * null if the project is not in the array
+     */
+    getProjectbyId(projectId) {
+        for (const project of this.#projects) {
+            if (project.id === projectId) {
+                return project;
+            }
+        }
+
+        return null;
+    }
+
+    /**
      * Removes a project with a given id from the array
      * @param {string} projectId The id of the project to be removed
      */
