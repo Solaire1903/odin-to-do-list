@@ -13,6 +13,19 @@ function handleNewProject(title) {
 }
 
 /**
+ * Sets a clicked project to active and renders it's tasks to the page
+ * @param {string} activeProjectCardId The id of the active project card
+ */
+function handleActiveProject(activeProjectId) {
+    projectContainer.activeProject = projectContainer.projects[
+        projectContainer.getProjectIndexbyId(activeProjectId)
+    ];
+
+    view.renderTasks(projectContainer.activeProject.tasks);
+    view.applyTaskEventListeners(() => console.log("CheckboxTest"), () => console.log("EditTestT"), () => console.log("DeleteTestT"));
+}
+
+/**
  * Loads the app on initial startup
  */
 function loadApp() {
@@ -21,14 +34,15 @@ function loadApp() {
     projectContainer.createProject("Project 3");
 
     projectContainer.projects[0].createTask("Task 1", null, "Next Week");
-    projectContainer.projects[0].createTask("Task 2", null, "Next Week");
-    projectContainer.projects[0].createTask("Task 3", null, "Next Week");
+    projectContainer.projects[1].createTask("Task 2", null, "Next Week");
+    projectContainer.projects[2].createTask("Task 3", null, "Next Week");
 
     view.renderProjects(projectContainer.projects);
-    view.renderTasks(projectContainer.projects[0].tasks);
+    view.applyProjectEventListeners(handleActiveProject, () => console.log("EditTestP"), () => console.log("DeleteTestP"));
 
+    view.renderTasks(projectContainer.projects[0].tasks);
     view.applyTaskEventListeners(() => console.log("CheckboxTest"), () => console.log("EditTestT"), () => console.log("DeleteTestT"));
-    view.applyProjectEventListeners(() => console.log("EditTestP"), () => console.log("DeleteTestP"));
+
     view.applyInitialEventListeners(handleNewProject);
 }
 

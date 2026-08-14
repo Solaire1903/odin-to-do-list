@@ -102,6 +102,34 @@ class View {
     }
 
     /**
+     * Applies the event listeners for all current project cards
+     * @param {function} handleActiveProject Handles active project functionality
+     * @param {function} editFunction Handles Edit functionality
+     * @param {function} deleteFunction Handles Delete functionality
+     */
+    applyProjectEventListeners(handleActiveProject, editFunction, deleteFunction) {
+        const projectCards = document.querySelectorAll(".project-card");
+        const editButtons = document.querySelectorAll(".project-edit-button");
+        const deleteButtons = document.querySelectorAll(".project-delete-button");
+
+        projectCards.forEach((button) => button.addEventListener("click", (event) => {
+            handleActiveProject(event.target.dataset.id);
+        }));
+
+        editButtons.forEach((button) => button.addEventListener("click", (event) => {
+            event.stopImmediatePropagation();
+
+            editFunction();
+        }));
+
+        deleteButtons.forEach((button) => button.addEventListener("click", (event) => {
+            event.stopImmediatePropagation();
+
+            deleteFunction();
+        }));
+    }
+
+    /**
      * Applies the event listeners for all current task cards
      * @param {function} checkboxFunction Handles Checkbox functionality
      * @param {function} editFunction Handles Edit functionality
@@ -112,27 +140,7 @@ class View {
         const editButtons = document.querySelectorAll(".task-edit-button");
         const deleteButtons = document.querySelectorAll(".task-delete-button");
 
-        checkboxButtons.forEach((button) => button.removeEventListener("click", checkboxFunction));
-        editButtons.forEach((button) => button.removeEventListener("click", editFunction));
-        deleteButtons.forEach((button) => button.removeEventListener("click", deleteFunction));
-
         checkboxButtons.forEach((button) => button.addEventListener("click", checkboxFunction));
-        editButtons.forEach((button) => button.addEventListener("click", editFunction));
-        deleteButtons.forEach((button) => button.addEventListener("click", deleteFunction));
-    }
-
-    /**
-     * Applies the event listeners for all current project cards
-     * @param {function} editFunction Handles Edit functionality
-     * @param {function} deleteFunction Handles Delete functionality
-     */
-    applyProjectEventListeners(editFunction, deleteFunction) {
-        const editButtons = document.querySelectorAll(".project-edit-button");
-        const deleteButtons = document.querySelectorAll(".project-delete-button");
-
-        editButtons.forEach((button) => button.removeEventListener("click", editFunction));
-        deleteButtons.forEach((button) => button.removeEventListener("click", deleteFunction));
-
         editButtons.forEach((button) => button.addEventListener("click", editFunction));
         deleteButtons.forEach((button) => button.addEventListener("click", deleteFunction));
     }
