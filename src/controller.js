@@ -19,9 +19,7 @@ function handleNewProject(title) {
  * @param {string} activeProjectCardId The id of the active project card
  */
 function handleActiveProject(activeProjectId) {
-    projectContainer.activeProject = projects[
-        projectContainer.getProjectIndexbyId(activeProjectId)
-    ];
+    projectContainer.activeProject = projects[projectContainer.getProjectIndexbyId(activeProjectId)];
 
     view.renderTasks(projectContainer.activeProject.tasks);
     view.applyTaskEventListeners(() => console.log("CheckboxTest"), () => console.log("EditTestT"), () => console.log("DeleteTestT"));
