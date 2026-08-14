@@ -11,6 +11,7 @@ const projects = projectContainer.projects;
 function handleNewProject(title) {
     projectContainer.createProject(title);
     view.renderProjects(projects);
+    view.applyProjectEventListeners(handleActiveProject, () => console.log("EditTestP"), () => console.log("DeleteTestP"));
 }
 
 /**
