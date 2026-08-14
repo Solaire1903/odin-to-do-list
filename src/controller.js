@@ -2,6 +2,7 @@ import model from "./model.js";
 import view from "./view.js";
 
 const projectContainer = model.projectContainer;
+const projects = projectContainer.projects;
 
 /**
  * Adds a new project to the Model and updates the View
@@ -9,7 +10,7 @@ const projectContainer = model.projectContainer;
  */
 function handleNewProject(title) {
     projectContainer.createProject(title);
-    view.renderProjects(projectContainer.projects);
+    view.renderProjects(projects);
 }
 
 /**
@@ -17,7 +18,7 @@ function handleNewProject(title) {
  * @param {string} activeProjectCardId The id of the active project card
  */
 function handleActiveProject(activeProjectId) {
-    projectContainer.activeProject = projectContainer.projects[
+    projectContainer.activeProject = projects[
         projectContainer.getProjectIndexbyId(activeProjectId)
     ];
 
@@ -33,14 +34,14 @@ function loadApp() {
     projectContainer.createProject("Project 2");
     projectContainer.createProject("Project 3");
 
-    projectContainer.projects[0].createTask("Task 1", null, "Next Week");
-    projectContainer.projects[1].createTask("Task 2", null, "Next Week");
-    projectContainer.projects[2].createTask("Task 3", null, "Next Week");
+    projects[0].createTask("Task 1", null, "Next Week");
+    projects[1].createTask("Task 2", null, "Next Week");
+    projects[2].createTask("Task 3", null, "Next Week");
 
-    view.renderProjects(projectContainer.projects);
+    view.renderProjects(projects);
     view.applyProjectEventListeners(handleActiveProject, () => console.log("EditTestP"), () => console.log("DeleteTestP"));
 
-    view.renderTasks(projectContainer.projects[0].tasks);
+    view.renderTasks(projects[0].tasks);
     view.applyTaskEventListeners(() => console.log("CheckboxTest"), () => console.log("EditTestT"), () => console.log("DeleteTestT"));
 
     view.applyInitialEventListeners(handleNewProject);
