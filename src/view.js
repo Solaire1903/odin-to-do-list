@@ -159,7 +159,7 @@ class View {
      * Applies all the initial event listeners on startup
      * @param {function} handleNewProject Handles functionality for creating a new Project
      */
-    applyInitialEventListeners(handleNewProject) {
+    applyInitialEventListeners(handleNewProject, handleNewTask) {
         const addProjectButton = document.getElementById("add-project-button");
 
         const newProjectWindow = document.getElementById("new-project-window");
@@ -210,7 +210,10 @@ class View {
         newTaskForm.addEventListener("submit", (event) => {
             event.preventDefault();
 
-            //Add function
+            handleNewTask(taskTitleInput.value,
+                taskDescriptionInput.value,
+                taskDueDateInput.value,
+                taskPriorityInput.value);
 
             taskTitleInput.value = "";
             taskDescriptionInput.value = "";

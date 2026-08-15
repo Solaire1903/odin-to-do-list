@@ -5,13 +5,26 @@ const projectContainer = model.projectContainer;
 const projects = projectContainer.projects;
 
 /**
- * Adds a new project to the Model and updates the View
+ * Adds a new project to the model and updates the view
  * @param {string} title The title of the new project to be created
  */
 function handleNewProject(title) {
     projectContainer.createProject(title);
     view.renderProjects(projects);
     view.applyProjectEventListeners(handleActiveProject, () => console.log("EditTestP"), () => console.log("DeleteTestP"));
+}
+
+/**
+ * Adds a new task to the active project and updates the view
+ * @param {string} title The task title
+ * @param {string} description The task description
+ * @param {string} dueDate The task due date
+ * @param {*} priority The task priority
+ */
+function handleNewTask(title, description, dueDate, priority) {
+    projectContainer.activeProject.createTask(title, description, dueDate, priority);
+    view.renderTasks(projectContainer.activeProject.tasks);
+    view.applyTaskEventListeners(() => console.log("CheckboxTest"), () => console.log("EditTestT"), () => console.log("DeleteTestT"));
 }
 
 /**
@@ -30,7 +43,7 @@ function handleActiveProject(activeProjectId) {
  * Loads the app on initial startup
  */
 function loadApp() {
-    view.applyInitialEventListeners(handleNewProject);
+    view.applyInitialEventListeners(handleNewProject, handleNewTask);
 
     projectContainer.createProject("Project 1");
     projectContainer.createProject("Project 2");
