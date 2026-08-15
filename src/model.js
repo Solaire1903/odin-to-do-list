@@ -122,7 +122,7 @@ class ToDoProjectContainer {
     }
 
     /**
-     * 
+     * Finds the index of the project with a given id
      * @param {string} projectId The id of the project to find the index for
      * @returns The index of the project with the given id,
      * -1 if the project is not in the array
