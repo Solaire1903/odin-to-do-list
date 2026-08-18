@@ -57,6 +57,10 @@ class ToDoProject {
         return this.#title;
     }
 
+    set title(title) {
+        this.#title = title;
+    }
+
     get tasks() {
         return this.#tasks;
     }
