@@ -4,6 +4,19 @@ import view from "./view.js";
 const projectContainer = model.projectContainer;
 const projects = projectContainer.projects;
 
+
+/**
+ * Sets a clicked project to active and renders it's tasks to the page
+ * @param {string} activeProjectCardId The id of the active project card
+ */
+function handleActiveProject(activeProjectId) {
+    projectContainer.activeProject = projects[projectContainer.getProjectIndexbyId(activeProjectId)];
+
+    view.renderActiveProjectTitle(projectContainer.activeProject.title);
+    view.renderTasks(projectContainer.activeProject.tasks);
+    view.applyTaskEventListeners(() => console.log("CheckboxTest"), () => console.log("EditTestT"), () => console.log("DeleteTestT"));
+}
+
 /**
  * Adds a new project to the model and updates the view
  * @param {string} title The title of the new project to be created
@@ -11,7 +24,18 @@ const projects = projectContainer.projects;
 function handleNewProject(title) {
     projectContainer.createProject(title);
     view.renderProjects(projects);
-    view.applyProjectEventListeners(handleActiveProject, () => console.log("EditTestP"), () => console.log("DeleteTestP"));
+    view.applyProjectEventListeners(handleActiveProject, () => console.log("DeleteTestP"));
+}
+
+/**
+ * Changes the title of a project with a given id and updates the view
+ * @param {string} projectId The id of the project to be edited
+ * @param {string} title The new title of the project
+ */
+function handleEditProject(projectId, title) {
+    projects[projectContainer.getProjectIndexbyId(projectId)].title = title;
+    view.renderProjects(projects);
+    view.applyProjectEventListeners(handleActiveProject, () => console.log("DeleteTestP"));
 }
 
 /**
@@ -28,22 +52,10 @@ function handleNewTask(title, description, dueDate, priority) {
 }
 
 /**
- * Sets a clicked project to active and renders it's tasks to the page
- * @param {string} activeProjectCardId The id of the active project card
- */
-function handleActiveProject(activeProjectId) {
-    projectContainer.activeProject = projects[projectContainer.getProjectIndexbyId(activeProjectId)];
-
-    view.renderActiveProjectTitle(projectContainer.activeProject.title);
-    view.renderTasks(projectContainer.activeProject.tasks);
-    view.applyTaskEventListeners(() => console.log("CheckboxTest"), () => console.log("EditTestT"), () => console.log("DeleteTestT"));
-}
-
-/**
  * Loads the app on initial startup
  */
 function loadApp() {
-    view.applyInitialEventListeners(handleNewProject, handleNewTask);
+    view.applyInitialEventListeners(handleNewProject, handleEditProject, handleNewTask);
 
     projectContainer.createProject("Project 1");
     projectContainer.createProject("Project 2");
@@ -54,7 +66,7 @@ function loadApp() {
     projects[2].createTask("Task 3", null, "Next Week");
 
     view.renderProjects(projects);
-    view.applyProjectEventListeners(handleActiveProject, () => console.log("EditTestP"), () => console.log("DeleteTestP"));
+    view.applyProjectEventListeners(handleActiveProject, () => console.log("DeleteTestP"));
 
     projectContainer.activeProject = projects[0];
 

@@ -2,6 +2,8 @@ import pencilSVG from "./img/pencil.svg"
 import trashCanSVG from "./img/trash-can.svg"
 
 class View {
+    #currentEditedProjectId
+
     /**
      * Renders projects from an array to the site
      * @param {Array.<ToDoProject>} projects The array of projects to be rendered
@@ -114,10 +116,9 @@ class View {
     /**
      * Applies the event listeners for all current project cards
      * @param {function} handleActiveProject Handles active project functionality
-     * @param {function} editFunction Handles Edit functionality
-     * @param {function} deleteFunction Handles Delete functionality
+     * @param {function} handleDeleteProject Handles Delete functionality
      */
-    applyProjectEventListeners(handleActiveProject, editFunction, deleteFunction) {
+    applyProjectEventListeners(handleActiveProject, handleDeleteProject) {
         const projectCards = document.querySelectorAll(".project-card");
         const editButtons = document.querySelectorAll(".project-edit-button");
         const deleteButtons = document.querySelectorAll(".project-delete-button");
@@ -129,13 +130,16 @@ class View {
         editButtons.forEach((button) => button.addEventListener("click", (event) => {
             event.stopImmediatePropagation();
 
-            editFunction();
+            const editedProjectId = event.target.parentNode.parentNode.parentNode.dataset.id
+            this.#currentEditedProjectId = editedProjectId;
+
+            document.getElementById("edit-project-window").showModal();
         }));
 
         deleteButtons.forEach((button) => button.addEventListener("click", (event) => {
             event.stopImmediatePropagation();
 
-            deleteFunction();
+            handleDeleteProject();
         }));
     }
 
@@ -158,14 +162,21 @@ class View {
     /**
      * Applies all the initial event listeners on startup
      * @param {function} handleNewProject Handles functionality for creating a new Project
+     * @param {function} handleEditProject Handles functionality for editing a Project
+     * @param {function} handleNewTask Handles functionality for creating a new Task
      */
-    applyInitialEventListeners(handleNewProject, handleNewTask) {
+    applyInitialEventListeners(handleNewProject, handleEditProject, handleNewTask) {
         const addProjectButton = document.getElementById("add-project-button");
 
         const newProjectWindow = document.getElementById("new-project-window");
         const newProjectWindowCloseButton = document.getElementById("new-project-window-close-button");
         const newProjectForm = document.getElementById("new-project-form");
         const projectTitleInput = document.getElementById("project-title-input");
+
+        const editProjectWindow = document.getElementById("edit-project-window");
+        const editProjectWindowCloseButton = document.getElementById("edit-project-window-close-button");
+        const editTitleInput =document.getElementById("edit-title-input");
+        const editProjectForm = document.getElementById("edit-project-form");
 
         const addTaskButton = document.getElementById("add-task-button");
 
@@ -193,6 +204,22 @@ class View {
 
             projectTitleInput.value = "";
             newProjectWindow.close();
+        })
+
+        editProjectWindowCloseButton.addEventListener("click", () => {
+            this.#currentEditedProjectId = "";
+            editTitleInput.value = "";
+            editProjectWindow.close();
+        })
+
+        editProjectForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            handleEditProject(this.#currentEditedProjectId, editTitleInput.value);
+
+            this.#currentEditedProjectId = "";
+            editTitleInput.value = "";
+            editProjectWindow.close()
         })
 
         addTaskButton.addEventListener("click", () => {
