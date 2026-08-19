@@ -54,10 +54,10 @@ function handleNewTask(title, description, dueDate, priority) {
 
 /**
  * Changes the properties of a task with a given id and updates the view
- * @param {*} taskId The id of the task to be edited
- * @param {*} title The new title of the task
- * @param {*} description The new description of the task
- * @param {*} dueDate The new due date of the task
+ * @param {string} taskId The id of the task to be edited
+ * @param {string} title The new title of the task
+ * @param {string} description The new description of the task
+ * @param {string} dueDate The new due date of the task
  * @param {*} priority The new priority of the task
  */
 function handleEditTask(taskId, title, description, dueDate, priority) {
