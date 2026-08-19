@@ -76,6 +76,28 @@
     </div>
   </dialog>
 
+  <dialog id="edit-task-window">
+    <div>
+      <button id="edit-task-window-close-button"><img src="./img/close.svg" alt="Close"></button>
+
+      <form action="" method="get" id="edit-task-form">
+        <label for="edit-task-title-input">Task Title:</label>
+        <input type="text" id="edit-task-title-input" required autofocus>
+
+        <label for="edit-task-description-input">Description:</label>
+        <textarea id="edit-task-description-input"></textarea>
+
+        <label for="edit-task-due-date-input">Due Date:</label>
+        <input type="text" id="edit-task-due-date-input">
+
+        <label for="edit-task-priority-input">Priority:</label>
+        <input type="text" id="edit-task-priority-input">
+
+        <button type="submit" id="confirm-edit-task-button">Confirm</button>
+      </form>
+    </div>
+  </dialog>
+
 </body>
 
 </html>
