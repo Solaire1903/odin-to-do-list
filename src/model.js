@@ -81,6 +81,22 @@ class ToDoProject {
     }
 
     /**
+     * Finds the index of the task with a given id
+     * @param {string} taskId The id of the task to find the index for
+     * @returns The index of the task with the given id,
+     * -1 if the task is not in the array
+     */
+    getTaskIndexbyId(taskId) {
+        for (let index in this.#tasks) {
+            if (this.#tasks[index].id === taskId) {
+                return index;
+            }
+        }
+
+        return -1;
+    }
+
+    /**
      * Removes a task with a given id from the array
      * @param {string} taskId The id of the task to be removed
      */
