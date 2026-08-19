@@ -14,7 +14,7 @@ function handleActiveProject(activeProjectId) {
 
     view.renderActiveProjectTitle(projectContainer.activeProject.title);
     view.renderTasks(projectContainer.activeProject.tasks);
-    view.applyTaskEventListeners(() => console.log("CheckboxTest"), () => console.log("EditTestT"), () => console.log("DeleteTestT"));
+    view.applyTaskEventListeners(() => console.log("CheckboxTest"), () => console.log("DeleteTestT"));
 }
 
 /**
@@ -49,14 +49,35 @@ function handleEditProject(projectId, title) {
 function handleNewTask(title, description, dueDate, priority) {
     projectContainer.activeProject.createTask(title, description, dueDate, priority);
     view.renderTasks(projectContainer.activeProject.tasks);
-    view.applyTaskEventListeners(() => console.log("CheckboxTest"), () => console.log("EditTestT"), () => console.log("DeleteTestT"));
+    view.applyTaskEventListeners(() => console.log("CheckboxTest"), () => console.log("DeleteTestT"));
+}
+
+/**
+ * Changes the properties of a task with a given id and updates the view
+ * @param {*} taskId The id of the task to be edited
+ * @param {*} title The new title of the task
+ * @param {*} description The new description of the task
+ * @param {*} dueDate The new due date of the task
+ * @param {*} priority The new priority of the task
+ */
+function handleEditTask(taskId, title, description, dueDate, priority) {
+    const editedTaskIndex = projectContainer.activeProject.getTaskIndexbyId(taskId);
+    const editedTask = projectContainer.activeProject.tasks[editedTaskIndex];
+
+    editedTask.title = title;
+    editedTask.description = description;
+    editedTask.dueDate = dueDate;
+    editedTask.priority = priority;
+
+    view.renderTasks(projectContainer.activeProject.tasks);
+    view.applyTaskEventListeners(() => console.log("CheckboxTest"), () => console.log("DeleteTestT"));
 }
 
 /**
  * Loads the app on initial startup
  */
 function loadApp() {
-    view.applyInitialEventListeners(handleNewProject, handleEditProject, handleNewTask);
+    view.applyInitialEventListeners(handleNewProject, handleEditProject, handleNewTask, handleEditTask);
 
     projectContainer.createProject("Project 1");
     projectContainer.createProject("Project 2");
@@ -73,7 +94,7 @@ function loadApp() {
 
     view.renderActiveProjectTitle(projectContainer.activeProject.title);
     view.renderTasks(projectContainer.activeProject.tasks);
-    view.applyTaskEventListeners(() => console.log("CheckboxTest"), () => console.log("EditTestT"), () => console.log("DeleteTestT"));
+    view.applyTaskEventListeners(() => console.log("CheckboxTest"), () => console.log("DeleteTestT"));
 }
 
 export default loadApp;

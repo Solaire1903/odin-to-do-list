@@ -3,6 +3,7 @@ import trashCanSVG from "./img/trash-can.svg"
 
 class View {
     #currentEditedProjectId
+    #currentEditedTaskId
 
     /**
      * Renders projects from an array to the site
@@ -146,17 +147,27 @@ class View {
     /**
      * Applies the event listeners for all current task cards
      * @param {function} checkboxFunction Handles Checkbox functionality
-     * @param {function} editFunction Handles Edit functionality
      * @param {function} deleteFunction Handles Delete functionality
      */
-    applyTaskEventListeners(checkboxFunction, editFunction, deleteFunction) {
+    applyTaskEventListeners(checkboxFunction, deleteFunction) {
         const checkboxButtons = document.querySelectorAll(".task-checkbox");
         const editButtons = document.querySelectorAll(".task-edit-button");
         const deleteButtons = document.querySelectorAll(".task-delete-button");
 
         checkboxButtons.forEach((button) => button.addEventListener("click", checkboxFunction));
-        editButtons.forEach((button) => button.addEventListener("click", editFunction));
-        deleteButtons.forEach((button) => button.addEventListener("click", deleteFunction));
+
+        editButtons.forEach((button) => button.addEventListener("click", (event) => {
+            event.stopImmediatePropagation();
+
+            const editedTaskId = event.target.parentNode.parentNode.parentNode.dataset.id
+            this.#currentEditedTaskId = editedTaskId;
+
+            document.getElementById("edit-task-window").showModal();
+        }));
+
+        deleteButtons.forEach((button) => button.addEventListener("click", (event) => {
+            event.stopImmediatePropagation();
+        }));
     }
 
     /**
@@ -164,8 +175,9 @@ class View {
      * @param {function} handleNewProject Handles functionality for creating a new Project
      * @param {function} handleEditProject Handles functionality for editing a Project
      * @param {function} handleNewTask Handles functionality for creating a new Task
+     * @param {function} handleEditTask Handles functionality for editing a Task
      */
-    applyInitialEventListeners(handleNewProject, handleEditProject, handleNewTask) {
+    applyInitialEventListeners(handleNewProject, handleEditProject, handleNewTask, handleEditTask) {
         const addProjectButton = document.getElementById("add-project-button");
 
         const newProjectWindow = document.getElementById("new-project-window");
@@ -175,7 +187,7 @@ class View {
 
         const editProjectWindow = document.getElementById("edit-project-window");
         const editProjectWindowCloseButton = document.getElementById("edit-project-window-close-button");
-        const editTitleInput =document.getElementById("edit-title-input");
+        const editTitleInput = document.getElementById("edit-title-input");
         const editProjectForm = document.getElementById("edit-project-form");
 
         const addTaskButton = document.getElementById("add-task-button");
@@ -187,6 +199,14 @@ class View {
         const taskDescriptionInput = document.getElementById("task-description-input");
         const taskDueDateInput = document.getElementById("task-due-date-input");
         const taskPriorityInput = document.getElementById("task-priority-input");
+
+        const editTaskWindow = document.getElementById("edit-task-window");
+        const editTaskWindowCloseButton = document.getElementById("edit-task-window-close-button");
+        const editTaskForm = document.getElementById("edit-task-form");
+        const editTaskTitleInput = document.getElementById("edit-task-title-input");
+        const editTaskDescriptionInput = document.getElementById("edit-task-description-input");
+        const editTaskDueDateInput = document.getElementById("edit-task-due-date-input");
+        const editTaskPriorityInput = document.getElementById("edit-task-priority-input");
 
         addProjectButton.addEventListener("click", () => {
             newProjectWindow.showModal();
@@ -247,6 +267,31 @@ class View {
             taskDueDateInput.value = "";
             taskPriorityInput.value = "";
             newTaskWindow.close();
+        })
+
+        editTaskWindowCloseButton.addEventListener("click", () => {
+            editTaskTitleInput.value = "";
+            editTaskDescriptionInput.value = "";
+            editTaskDueDateInput.value = "";
+            editTaskPriorityInput.value = "";
+            editTaskWindow.close();
+        })
+
+        editTaskForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            handleEditTask(this.#currentEditedTaskId,
+                editTaskTitleInput.value,
+                editTaskDescriptionInput.value,
+                editTaskDueDateInput.value,
+                editTaskPriorityInput.value
+            );
+
+            editTaskTitleInput.value = "";
+            editTaskDescriptionInput.value = "";
+            editTaskDueDateInput.value = "";
+            editTaskPriorityInput.value = "";
+            editTaskWindow.close();
         })
     }
 }
