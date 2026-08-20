@@ -130,14 +130,17 @@ class View {
         editButtons.forEach((button) => button.addEventListener("click", (event) => {
             event.stopImmediatePropagation();
 
-            const editedProjectId = event.target.parentNode.parentNode.parentNode.dataset.id
-            this.#currentProjectId = editedProjectId;
+            const selectedProjectId = event.target.parentNode.parentNode.parentNode.dataset.id
+            this.#currentProjectId = selectedProjectId;
 
             document.getElementById("edit-project-window").showModal();
         }));
 
         deleteButtons.forEach((button) => button.addEventListener("click", (event) => {
             event.stopImmediatePropagation();
+
+            const selectedProjectId = event.target.parentNode.parentNode.parentNode.dataset.id
+            this.#currentProjectId = selectedProjectId;
 
             document.getElementById("delete-project-window").showModal();
         }));
@@ -158,8 +161,8 @@ class View {
         editButtons.forEach((button) => button.addEventListener("click", (event) => {
             event.stopImmediatePropagation();
 
-            const editedTaskId = event.target.parentNode.parentNode.parentNode.dataset.id
-            this.#currentTaskId = editedTaskId;
+            const selectedTaskId = event.target.parentNode.parentNode.parentNode.dataset.id
+            this.#currentTaskId = selectedTaskId;
 
             document.getElementById("edit-task-window").showModal();
         }));
