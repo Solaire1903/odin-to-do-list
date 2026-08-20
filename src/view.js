@@ -154,7 +154,7 @@ class View {
         const editButtons = document.querySelectorAll(".task-edit-button");
         const deleteButtons = document.querySelectorAll(".task-delete-button");
 
-        checkboxButtons.forEach((button) => button.addEventListener("click", checkboxFunction));
+        checkboxButtons.forEach((button) => button.addEventListener("click", () => {}));
 
         editButtons.forEach((button) => button.addEventListener("click", (event) => {
             event.stopImmediatePropagation();
@@ -174,10 +174,11 @@ class View {
      * Applies all the initial event listeners on startup
      * @param {function} handleNewProject Handles functionality for creating a new Project
      * @param {function} handleEditProject Handles functionality for editing a Project
+     * @param {function} handleDeleteProject Handles functionality for deleting a Project
      * @param {function} handleNewTask Handles functionality for creating a new Task
      * @param {function} handleEditTask Handles functionality for editing a Task
      */
-    applyInitialEventListeners(handleNewProject, handleEditProject, handleNewTask, handleEditTask) {
+    applyInitialEventListeners(handleNewProject, handleEditProject, handleDeleteProject, handleNewTask, handleEditTask) {
         const addProjectButton = document.getElementById("add-project-button");
 
         const newProjectWindow = document.getElementById("new-project-window");
@@ -189,6 +190,10 @@ class View {
         const editProjectWindowCloseButton = document.getElementById("edit-project-window-close-button");
         const editTitleInput = document.getElementById("edit-title-input");
         const editProjectForm = document.getElementById("edit-project-form");
+
+        const deleteProjectWindow = document.getElementById("delete-project-window");
+        const deleteProjectWindowCloseButton = document.getElementById("delete-project-window-close-button");
+        const deleteProjectButton = document.getElementById("delete-project-button");
 
         const addTaskButton = document.getElementById("add-task-button");
 
@@ -240,6 +245,18 @@ class View {
             this.#currentProjectId = "";
             editTitleInput.value = "";
             editProjectWindow.close()
+        })
+
+        deleteProjectWindowCloseButton.addEventListener("click", () => {
+            this.#currentProjectId = "";
+            deleteProjectWindow.close();
+        })
+
+        deleteProjectButton.addEventListener("click", () => {
+            handleDeleteProject(this.#currentProjectId);
+
+            this.#currentProjectId = "";
+            deleteProjectWindow.close();
         })
 
         addTaskButton.addEventListener("click", () => {
