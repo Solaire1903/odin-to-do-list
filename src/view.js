@@ -148,10 +148,8 @@ class View {
 
     /**
      * Applies the event listeners for all current task cards
-     * @param {function} checkboxFunction Handles Checkbox functionality
-     * @param {function} deleteFunction Handles Delete functionality
      */
-    applyTaskEventListeners(checkboxFunction, deleteFunction) {
+    applyTaskEventListeners() {
         const checkboxButtons = document.querySelectorAll(".task-checkbox");
         const editButtons = document.querySelectorAll(".task-edit-button");
         const deleteButtons = document.querySelectorAll(".task-delete-button");

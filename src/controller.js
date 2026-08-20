@@ -14,7 +14,7 @@ function handleActiveProject(activeProjectId) {
 
     view.renderActiveProjectTitle(projectContainer.activeProject.title);
     view.renderTasks(projectContainer.activeProject.tasks);
-    view.applyTaskEventListeners(() => console.log("CheckboxTest"), () => console.log("DeleteTestT"));
+    view.applyTaskEventListeners();
 }
 
 /**
@@ -49,7 +49,7 @@ function handleEditProject(projectId, title) {
 function handleNewTask(title, description, dueDate, priority) {
     projectContainer.activeProject.createTask(title, description, dueDate, priority);
     view.renderTasks(projectContainer.activeProject.tasks);
-    view.applyTaskEventListeners(() => console.log("CheckboxTest"), () => console.log("DeleteTestT"));
+    view.applyTaskEventListeners();
 }
 
 /**
@@ -70,7 +70,7 @@ function handleEditTask(taskId, title, description, dueDate, priority) {
     editedTask.priority = priority;
 
     view.renderTasks(projectContainer.activeProject.tasks);
-    view.applyTaskEventListeners(() => console.log("CheckboxTest"), () => console.log("DeleteTestT"));
+    view.applyTaskEventListeners();
 }
 
 /**
@@ -94,7 +94,7 @@ function loadApp() {
 
     view.renderActiveProjectTitle(projectContainer.activeProject.title);
     view.renderTasks(projectContainer.activeProject.tasks);
-    view.applyTaskEventListeners(() => console.log("CheckboxTest"), () => console.log("DeleteTestT"));
+    view.applyTaskEventListeners();
 }
 
 export default loadApp;
