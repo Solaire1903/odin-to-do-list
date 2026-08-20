@@ -114,6 +114,9 @@ class View {
         }
     }
 
+    /**
+     * Removes the "Add Task" button from the view
+     */
     removeTaskButton() {
         document.getElementById("add-task-button").remove();
     }

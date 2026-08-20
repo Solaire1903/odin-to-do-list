@@ -39,6 +39,10 @@ function handleEditProject(projectId, title) {
     view.applyProjectEventListeners(handleActiveProject);
 }
 
+/**
+ * Deletes a project with a given id and updates the view
+ * @param {string} projectId The id of the project to be deleted
+ */
 function handleDeleteProject(projectId) {
     projectContainer.removeProject(projectId);
     view.renderProjects(projects);
