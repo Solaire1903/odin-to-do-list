@@ -138,6 +138,8 @@ class View {
 
         deleteButtons.forEach((button) => button.addEventListener("click", (event) => {
             event.stopImmediatePropagation();
+
+            document.getElementById("delete-project-window").showModal();
         }));
     }
 
