@@ -24,7 +24,7 @@ function handleActiveProject(activeProjectId) {
 function handleNewProject(title) {
     projectContainer.createProject(title);
     view.renderProjects(projects);
-    view.applyProjectEventListeners(handleActiveProject, () => console.log("DeleteTestP"));
+    view.applyProjectEventListeners(handleActiveProject);
 }
 
 /**
@@ -36,7 +36,7 @@ function handleEditProject(projectId, title) {
     projects[projectContainer.getProjectIndexbyId(projectId)].title = title;
     view.renderProjects(projects);
     view.renderActiveProjectTitle(projectContainer.activeProject.title);
-    view.applyProjectEventListeners(handleActiveProject, () => console.log("DeleteTestP"));
+    view.applyProjectEventListeners(handleActiveProject);
 }
 
 /**
@@ -88,7 +88,7 @@ function loadApp() {
     projects[2].createTask("Task 3", null, "Next Week");
 
     view.renderProjects(projects);
-    view.applyProjectEventListeners(handleActiveProject, () => console.log("DeleteTestP"));
+    view.applyProjectEventListeners(handleActiveProject);
 
     projectContainer.activeProject = projects[0];
 

@@ -117,9 +117,8 @@ class View {
     /**
      * Applies the event listeners for all current project cards
      * @param {function} handleActiveProject Handles active project functionality
-     * @param {function} handleDeleteProject Handles Delete functionality
      */
-    applyProjectEventListeners(handleActiveProject, handleDeleteProject) {
+    applyProjectEventListeners(handleActiveProject) {
         const projectCards = document.querySelectorAll(".project-card");
         const editButtons = document.querySelectorAll(".project-edit-button");
         const deleteButtons = document.querySelectorAll(".project-delete-button");
