@@ -170,7 +170,7 @@ class View {
         const editButtons = document.querySelectorAll(".task-edit-button");
         const deleteButtons = document.querySelectorAll(".task-delete-button");
 
-        checkboxButtons.forEach((button) => button.addEventListener("click", () => {}));
+        checkboxButtons.forEach((button) => button.addEventListener("click", () => { }));
 
         editButtons.forEach((button) => button.addEventListener("click", (event) => {
             event.stopImmediatePropagation();
@@ -183,6 +183,11 @@ class View {
 
         deleteButtons.forEach((button) => button.addEventListener("click", (event) => {
             event.stopImmediatePropagation();
+
+            const selectedTaskId = event.target.parentNode.parentNode.parentNode.dataset.id
+            this.#currentTaskId = selectedTaskId;
+
+            document.getElementById("delete-task-window").showModal();
         }));
     }
 
@@ -193,8 +198,10 @@ class View {
      * @param {function} handleDeleteProject Handles functionality for deleting a Project
      * @param {function} handleNewTask Handles functionality for creating a new Task
      * @param {function} handleEditTask Handles functionality for editing a Task
+     * @param {function} handleDeleteTask Handles functionality for deleting a Task
      */
-    applyInitialEventListeners(handleNewProject, handleEditProject, handleDeleteProject, handleNewTask, handleEditTask) {
+    applyInitialEventListeners(handleNewProject, handleEditProject, handleDeleteProject, handleNewTask,
+        handleEditTask, handleDeleteTask) {
         const addProjectButton = document.getElementById("add-project-button");
 
         const newProjectWindow = document.getElementById("new-project-window");
@@ -228,6 +235,10 @@ class View {
         const editTaskDescriptionInput = document.getElementById("edit-task-description-input");
         const editTaskDueDateInput = document.getElementById("edit-task-due-date-input");
         const editTaskPriorityInput = document.getElementById("edit-task-priority-input");
+
+        const deleteTaskWindow = document.getElementById("delete-task-window");
+        const deleteTaskWindowCloseButton = document.getElementById("delete-task-window-close-button");
+        const deleteTaskButton = document.getElementById("delete-task-button");
 
         addProjectButton.addEventListener("click", () => {
             newProjectWindow.showModal();
@@ -327,6 +338,18 @@ class View {
             editTaskDueDateInput.value = "";
             editTaskPriorityInput.value = "";
             editTaskWindow.close();
+        })
+
+        deleteTaskWindowCloseButton.addEventListener("click", () => {
+            this.#currentTaskId = "";
+            deleteTaskWindow.close();
+        })
+
+        deleteTaskButton.addEventListener("click", () => {
+            handleDeleteTask(this.#currentTaskId);
+
+            this.#currentTaskId = "";
+            deleteTaskWindow.close();
         })
     }
 }
