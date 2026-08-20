@@ -115,7 +115,7 @@ class View {
     }
 
     /**
-     * Show the "Add Task" button on the page
+     * Renders the "Add Task" button to the page
      */
     showTaskButton() {
         document.getElementById("add-task-button").removeAttribute("hidden");
