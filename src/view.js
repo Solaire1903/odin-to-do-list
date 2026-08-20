@@ -246,6 +246,7 @@ class View {
         })
 
         newTaskWindowCloseButton.addEventListener("click", () => {
+            this.#currentTaskId = "";
             taskTitleInput.value = "";
             taskDescriptionInput.value = "";
             taskDueDateInput.value = "";
@@ -261,6 +262,7 @@ class View {
                 taskDueDateInput.value,
                 taskPriorityInput.value);
 
+            this.#currentTaskId = "";
             taskTitleInput.value = "";
             taskDescriptionInput.value = "";
             taskDueDateInput.value = "";
