@@ -114,6 +114,10 @@ class View {
         }
     }
 
+    removeTaskButton() {
+        document.getElementById("add-task-button").remove();
+    }
+
     /**
      * Applies the event listeners for all current project cards
      * @param {function} handleActiveProject Handles active project functionality
