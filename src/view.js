@@ -115,6 +115,13 @@ class View {
     }
 
     /**
+     * Show the "Add Task" button on the page
+     */
+    showTaskButton() {
+        document.getElementById("add-task-button").removeAttribute("hidden");
+    }
+
+    /**
      * Hides the "Add Task" button from the page
      */
     hideTaskButton() {
@@ -131,6 +138,8 @@ class View {
         const deleteButtons = document.querySelectorAll(".project-delete-button");
 
         projectCards.forEach((button) => button.addEventListener("click", (event) => {
+            this.showTaskButton();
+
             handleActiveProject(event.target.dataset.id);
         }));
 
