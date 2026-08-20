@@ -138,8 +138,6 @@ class View {
 
         deleteButtons.forEach((button) => button.addEventListener("click", (event) => {
             event.stopImmediatePropagation();
-
-            handleDeleteProject();
         }));
     }
 
