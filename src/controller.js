@@ -46,12 +46,12 @@ function handleEditProject(projectId, title) {
 function handleDeleteProject(projectId) {
     projectContainer.removeProject(projectId);
     view.renderProjects(projects);
-    
+
     if (projectContainer.activeProject.id === projectId) {
         projectContainer.activeProject = null;
         view.renderActiveProjectTitle("");
         view.renderTasks([]);
-        view.hideTaskButton();  
+        view.hideTaskButton();
     }
 
     view.applyProjectEventListeners(handleActiveProject);
@@ -71,7 +71,7 @@ function handleNewTask(title, description, dueDate, priority) {
 }
 
 /**
- * Changes the properties of a task with a given id and updates the view
+ * Changes the properties of a task with a given id on the active project and updates the view
  * @param {string} taskId The id of the task to be edited
  * @param {string} title The new title of the task
  * @param {string} description The new description of the task
@@ -92,6 +92,17 @@ function handleEditTask(taskId, title, description, dueDate, priority) {
 }
 
 /**
+ * Deletes a task with a given id from the active project and updates the view
+ * @param {string} taskId The id of the task to delete
+ */
+function handleDeleteTask(taskId) {
+    projectContainer.activeProject.removeTask(taskId);
+
+    view.renderTasks(projectContainer.activeProject.tasks);
+    view.applyTaskEventListeners();
+}
+
+/**
  * Loads the app on initial startup
  */
 function loadApp() {
@@ -100,7 +111,8 @@ function loadApp() {
         handleEditProject,
         handleDeleteProject,
         handleNewTask,
-        handleEditTask);
+        handleEditTask,
+        handleDeleteTask);
 
     projectContainer.createProject("Project 1");
     projectContainer.createProject("Project 2");
