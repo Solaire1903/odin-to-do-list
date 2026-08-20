@@ -2,8 +2,8 @@ import pencilSVG from "./img/pencil.svg"
 import trashCanSVG from "./img/trash-can.svg"
 
 class View {
-    #currentEditedProjectId
-    #currentEditedTaskId
+    #currentProjectId
+    #currentTaskId
 
     /**
      * Renders projects from an array to the site
@@ -131,7 +131,7 @@ class View {
             event.stopImmediatePropagation();
 
             const editedProjectId = event.target.parentNode.parentNode.parentNode.dataset.id
-            this.#currentEditedProjectId = editedProjectId;
+            this.#currentProjectId = editedProjectId;
 
             document.getElementById("edit-project-window").showModal();
         }));
@@ -159,7 +159,7 @@ class View {
             event.stopImmediatePropagation();
 
             const editedTaskId = event.target.parentNode.parentNode.parentNode.dataset.id
-            this.#currentEditedTaskId = editedTaskId;
+            this.#currentTaskId = editedTaskId;
 
             document.getElementById("edit-task-window").showModal();
         }));
@@ -226,7 +226,7 @@ class View {
         })
 
         editProjectWindowCloseButton.addEventListener("click", () => {
-            this.#currentEditedProjectId = "";
+            this.#currentProjectId = "";
             editTitleInput.value = "";
             editProjectWindow.close();
         })
@@ -234,9 +234,9 @@ class View {
         editProjectForm.addEventListener("submit", (event) => {
             event.preventDefault();
 
-            handleEditProject(this.#currentEditedProjectId, editTitleInput.value);
+            handleEditProject(this.#currentProjectId, editTitleInput.value);
 
-            this.#currentEditedProjectId = "";
+            this.#currentProjectId = "";
             editTitleInput.value = "";
             editProjectWindow.close()
         })
@@ -279,7 +279,7 @@ class View {
         editTaskForm.addEventListener("submit", (event) => {
             event.preventDefault();
 
-            handleEditTask(this.#currentEditedTaskId,
+            handleEditTask(this.#currentTaskId,
                 editTaskTitleInput.value,
                 editTaskDescriptionInput.value,
                 editTaskDueDateInput.value,
