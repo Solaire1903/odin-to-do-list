@@ -39,6 +39,14 @@ function handleEditProject(projectId, title) {
     view.applyProjectEventListeners(handleActiveProject);
 }
 
+function handleDeleteProject(projectId) {
+    projectContainer.removeProject(projectId);
+    view.renderProjects(projects);
+    view.renderActiveProjectTitle(projectContainer.activeProject.title);
+    view.renderTasks(projectContainer.activeProject.tasks);
+    view.applyProjectEventListeners(handleActiveProject);
+}
+
 /**
  * Adds a new task to the active project and updates the view
  * @param {string} title The task title
@@ -77,7 +85,12 @@ function handleEditTask(taskId, title, description, dueDate, priority) {
  * Loads the app on initial startup
  */
 function loadApp() {
-    view.applyInitialEventListeners(handleNewProject, handleEditProject, handleNewTask, handleEditTask);
+    view.applyInitialEventListeners(
+        handleNewProject,
+        handleEditProject,
+        handleDeleteProject,
+        handleNewTask,
+        handleEditTask);
 
     projectContainer.createProject("Project 1");
     projectContainer.createProject("Project 2");
