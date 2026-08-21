@@ -47,7 +47,8 @@ function handleDeleteProject(projectId) {
     projectContainer.removeProject(projectId);
     view.renderProjects(projects);
 
-    if (projectContainer.activeProject.id === projectId) {
+    if (projectContainer.activeProject !== null &&
+        projectContainer.activeProject.id === projectId) {
         projectContainer.activeProject = null;
         view.renderActiveProjectTitle("");
         view.renderTasks([]);
