@@ -35,8 +35,12 @@ function handleNewProject(title) {
 function handleEditProject(projectId, title) {
     projects[projectContainer.getProjectIndexbyId(projectId)].title = title;
     view.renderProjects(projects);
-    view.renderActiveProjectTitle(projectContainer.activeProject.title);
     view.applyProjectEventListeners(handleActiveProject);
+
+    if (projectContainer.activeProject !== null &&
+        projectContainer.activeProject.id === projectId) {
+        view.renderActiveProjectTitle(projectContainer.activeProject.title);
+    }
 }
 
 /**
