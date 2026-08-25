@@ -350,7 +350,7 @@ class View {
         })
 
         editTaskWindowCloseButton.addEventListener("click", () => {
-            //this.#currentTaskId = "";
+            this.#currentTaskId = "";
             editTaskTitleInput.value = "";
             editTaskDescriptionInput.value = "";
             editTaskDueDateInput.value = "";
@@ -368,7 +368,7 @@ class View {
                 editTaskPriorityInput.value
             );
 
-            //this.#currentTaskId = "";
+            this.#currentTaskId = "";
             editTaskTitleInput.value = "";
             editTaskDescriptionInput.value = "";
             editTaskDueDateInput.value = "";
