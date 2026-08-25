@@ -1,3 +1,4 @@
+import textBoxSVG from "./img/text-box.svg"
 import pencilSVG from "./img/pencil.svg"
 import trashCanSVG from "./img/trash-can.svg"
 
@@ -94,6 +95,10 @@ class View {
             taskIconArea.classList.add("task-icon-area");
             taskCard.appendChild(taskIconArea);
 
+            const descriptionButton = document.createElement("button");
+            descriptionButton.classList.add("description-button");
+            taskIconArea.appendChild(descriptionButton);
+
             const editButton = document.createElement("button");
             editButton.classList.add("task-edit-button");
             taskIconArea.appendChild(editButton);
@@ -101,6 +106,11 @@ class View {
             const deleteButton = document.createElement("button");
             deleteButton.classList.add("task-delete-button");
             taskIconArea.appendChild(deleteButton);
+
+            const descriptionButtonImage = document.createElement("img");
+            descriptionButtonImage.src = textBoxSVG;
+            descriptionButtonImage.alt = "Description";
+            descriptionButton.appendChild(descriptionButtonImage);
 
             const deleteButtonImage = document.createElement("img");
             deleteButtonImage.src = trashCanSVG;
