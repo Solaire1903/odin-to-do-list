@@ -174,13 +174,27 @@ class View {
 
     /**
      * Applies the event listeners for all current task cards
+     * @param {function} getTaskDescription Function to retrieve a task's description
      */
-    applyTaskEventListeners() {
+    applyTaskEventListeners(getTaskDescription) {
         const checkboxButtons = document.querySelectorAll(".task-checkbox");
+        const descriptionButtons = document.querySelectorAll(".description-button");
         const editButtons = document.querySelectorAll(".task-edit-button");
         const deleteButtons = document.querySelectorAll(".task-delete-button");
 
         checkboxButtons.forEach((button) => button.addEventListener("click", () => { }));
+
+        descriptionButtons.forEach((button) => button.addEventListener("click", (event) => {
+            event.stopImmediatePropagation();
+
+            const selectedTaskId = event.target.parentNode.parentNode.parentNode.dataset.id
+            this.#currentTaskId = selectedTaskId;
+
+            const taskDescription = document.getElementById("task-description");
+            taskDescription.textContent = getTaskDescription(this.#currentTaskId);
+
+            document.getElementById("description-window").showModal();
+        }));
 
         editButtons.forEach((button) => button.addEventListener("click", (event) => {
             event.stopImmediatePropagation();
@@ -237,6 +251,10 @@ class View {
         const taskDescriptionInput = document.getElementById("task-description-input");
         const taskDueDateInput = document.getElementById("task-due-date-input");
         const taskPriorityInput = document.getElementById("task-priority-input");
+
+        const descriptionWindow = document.getElementById("description-window");
+        const descriptionWindowCloseButton = document.getElementById("description-window-close-button");
+        const taskDescription = document.getElementById("task-description");
 
         const editTaskWindow = document.getElementById("edit-task-window");
         const editTaskWindowCloseButton = document.getElementById("edit-task-window-close-button");
@@ -325,7 +343,14 @@ class View {
             newTaskWindow.close();
         })
 
+        descriptionWindowCloseButton.addEventListener("click", () => {
+            this.#currentTaskId = "";
+            taskDescription.textContent = "";
+            descriptionWindow.close();
+        })
+
         editTaskWindowCloseButton.addEventListener("click", () => {
+            //this.#currentTaskId = "";
             editTaskTitleInput.value = "";
             editTaskDescriptionInput.value = "";
             editTaskDueDateInput.value = "";
@@ -343,6 +368,7 @@ class View {
                 editTaskPriorityInput.value
             );
 
+            //this.#currentTaskId = "";
             editTaskTitleInput.value = "";
             editTaskDescriptionInput.value = "";
             editTaskDueDateInput.value = "";
