@@ -14,7 +14,7 @@ function handleActiveProject(activeProjectId) {
 
     view.renderActiveProjectTitle(projectContainer.activeProject.title);
     view.renderTasks(projectContainer.activeProject.tasks);
-    view.applyTaskEventListeners();
+    view.applyTaskEventListeners(getTaskDescription);
 }
 
 /**
@@ -25,6 +25,17 @@ function handleNewProject(title) {
     projectContainer.createProject(title);
     view.renderProjects(projects);
     view.applyProjectEventListeners(handleActiveProject);
+}
+
+/**
+ * Retrieves the description of a task with a given id
+ * @param {string} taskId The id of the task to get the description of
+ * @returns The description of the task
+ */
+function getTaskDescription(taskId) {
+    return projectContainer.activeProject.tasks[
+        projectContainer.activeProject.getTaskIndexbyId(taskId)
+    ].description;
 }
 
 /**
@@ -72,7 +83,7 @@ function handleDeleteProject(projectId) {
 function handleNewTask(title, description, dueDate, priority) {
     projectContainer.activeProject.createTask(title, description, dueDate, priority);
     view.renderTasks(projectContainer.activeProject.tasks);
-    view.applyTaskEventListeners();
+    view.applyTaskEventListeners(getTaskDescription);
 }
 
 /**
@@ -93,7 +104,7 @@ function handleEditTask(taskId, title, description, dueDate, priority) {
     editedTask.priority = priority;
 
     view.renderTasks(projectContainer.activeProject.tasks);
-    view.applyTaskEventListeners();
+    view.applyTaskEventListeners(getTaskDescription);
 }
 
 /**
@@ -104,7 +115,7 @@ function handleDeleteTask(taskId) {
     projectContainer.activeProject.removeTask(taskId);
 
     view.renderTasks(projectContainer.activeProject.tasks);
-    view.applyTaskEventListeners();
+    view.applyTaskEventListeners(getTaskDescription);
 }
 
 /**
@@ -134,7 +145,7 @@ function loadApp() {
 
     view.renderActiveProjectTitle(projectContainer.activeProject.title);
     view.renderTasks(projectContainer.activeProject.tasks);
-    view.applyTaskEventListeners();
+    view.applyTaskEventListeners(getTaskDescription);
 }
 
 export default loadApp;
