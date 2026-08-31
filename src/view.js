@@ -6,6 +6,7 @@ class View {
     #currentProjectId
     #currentTaskId
     #currentRadioButtonChoice
+    #currentRadioButtonChoiceEdit
 
     /**
      * Renders projects from an array to the site
@@ -321,7 +322,6 @@ class View {
 
         newTaskWindowCloseButton.addEventListener("click", () => {
             this.#currentTaskId = "";
-            this.#currentRadioButtonChoice = "";
             taskTitleInput.value = "";
             taskDescriptionInput.value = "";
             taskDueDateInput.value = "";
@@ -348,7 +348,6 @@ class View {
             );
 
             this.#currentTaskId = "";
-            this.#currentRadioButtonChoice = "";
             taskTitleInput.value = "";
             taskDescriptionInput.value = "";
             taskDueDateInput.value = "";
@@ -363,7 +362,6 @@ class View {
 
         editTaskWindowCloseButton.addEventListener("click", () => {
             this.#currentTaskId = "";
-            this.#currentRadioButtonChoice = "";
             editTaskTitleInput.value = "";
             editTaskDescriptionInput.value = "";
             editTaskDueDateInput.value = "";
@@ -377,7 +375,7 @@ class View {
                 return;
             }
 
-            this.#currentRadioButtonChoice = target.value;
+            this.#currentRadioButtonChoiceEdit = target.value;
         })
 
         editTaskForm.addEventListener("submit", (event) => {
@@ -387,11 +385,10 @@ class View {
                 editTaskTitleInput.value,
                 editTaskDescriptionInput.value,
                 editTaskDueDateInput.value,
-                this.#currentRadioButtonChoice
+                this.#currentRadioButtonChoiceEdit
             );
 
             this.#currentTaskId = "";
-            this.#currentRadioButtonChoice = "";
             editTaskTitleInput.value = "";
             editTaskDescriptionInput.value = "";
             editTaskDueDateInput.value = "";
