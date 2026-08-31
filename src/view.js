@@ -5,6 +5,7 @@ import trashCanSVG from "./img/trash-can.svg"
 class View {
     #currentProjectId
     #currentTaskId
+    #currentRadioButtonChoice
 
     /**
      * Renders projects from an array to the site
@@ -320,11 +321,21 @@ class View {
 
         newTaskWindowCloseButton.addEventListener("click", () => {
             this.#currentTaskId = "";
+            this.#currentRadioButtonChoice = "";
             taskTitleInput.value = "";
             taskDescriptionInput.value = "";
             taskDueDateInput.value = "";
-            taskPriorityInput.value = "";
             newTaskWindow.close();
+        })
+
+        taskPriorityInput.addEventListener("click", (event) => {
+            const target = event.target;
+
+            if (target === taskPriorityInput || target.tagName === "LABEL") {
+                return;
+            }
+
+            this.#currentRadioButtonChoice = target.value;
         })
 
         newTaskForm.addEventListener("submit", (event) => {
@@ -333,13 +344,14 @@ class View {
             handleNewTask(taskTitleInput.value,
                 taskDescriptionInput.value,
                 taskDueDateInput.value,
-                taskPriorityInput.value);
+                this.#currentRadioButtonChoice
+            );
 
             this.#currentTaskId = "";
+            this.#currentRadioButtonChoice = "";
             taskTitleInput.value = "";
             taskDescriptionInput.value = "";
             taskDueDateInput.value = "";
-            taskPriorityInput.value = "";
             newTaskWindow.close();
         })
 
@@ -351,11 +363,21 @@ class View {
 
         editTaskWindowCloseButton.addEventListener("click", () => {
             this.#currentTaskId = "";
+            this.#currentRadioButtonChoice = "";
             editTaskTitleInput.value = "";
             editTaskDescriptionInput.value = "";
             editTaskDueDateInput.value = "";
-            editTaskPriorityInput.value = "";
             editTaskWindow.close();
+        })
+
+        editTaskPriorityInput.addEventListener("click", (event) => {
+            const target = event.target;
+
+            if (target === editTaskPriorityInput || target.tagName === "LABEL") {
+                return;
+            }
+
+            this.#currentRadioButtonChoice = target.value;
         })
 
         editTaskForm.addEventListener("submit", (event) => {
@@ -365,14 +387,14 @@ class View {
                 editTaskTitleInput.value,
                 editTaskDescriptionInput.value,
                 editTaskDueDateInput.value,
-                editTaskPriorityInput.value
+                this.#currentRadioButtonChoice
             );
 
             this.#currentTaskId = "";
+            this.#currentRadioButtonChoice = "";
             editTaskTitleInput.value = "";
             editTaskDescriptionInput.value = "";
             editTaskDueDateInput.value = "";
-            editTaskPriorityInput.value = "";
             editTaskWindow.close();
         })
 
