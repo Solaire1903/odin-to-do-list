@@ -77,6 +77,19 @@ class View {
             const taskCard = document.createElement("div");
             taskCard.classList.add("task-card");
             taskCard.dataset.id = task.id;
+
+            switch (task.priority) {
+                case "low":
+                    taskCard.style.backgroundColor = "green";
+                    break;
+                case "medium":
+                    taskCard.style.backgroundColor = "yellow";
+                    break;
+                case "high":
+                    taskCard.style.backgroundColor = "red";
+                    break;
+            }
+
             listElement.appendChild(taskCard);
 
             const taskCheckbox = document.createElement("button");
@@ -99,14 +112,17 @@ class View {
 
             const descriptionButton = document.createElement("button");
             descriptionButton.classList.add("description-button");
+            descriptionButton.style.backgroundColor = taskCard.style.backgroundColor;
             taskIconArea.appendChild(descriptionButton);
 
             const editButton = document.createElement("button");
             editButton.classList.add("task-edit-button");
+            editButton.style.backgroundColor = taskCard.style.backgroundColor;
             taskIconArea.appendChild(editButton);
 
             const deleteButton = document.createElement("button");
             deleteButton.classList.add("task-delete-button");
+            deleteButton.style.backgroundColor = taskCard.style.backgroundColor;
             taskIconArea.appendChild(deleteButton);
 
             const descriptionButtonImage = document.createElement("img");
