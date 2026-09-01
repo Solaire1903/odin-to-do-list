@@ -1,6 +1,7 @@
-import textBoxSVG from "./img/text-box.svg"
-import pencilSVG from "./img/pencil.svg"
-import trashCanSVG from "./img/trash-can.svg"
+import {format} from "date-fns";
+import textBoxSVG from "./img/text-box.svg";
+import pencilSVG from "./img/pencil.svg";
+import trashCanSVG from "./img/trash-can.svg";
 
 class View {
     #currentProjectId
@@ -103,7 +104,7 @@ class View {
 
             const taskDueDate = document.createElement("p");
             taskDueDate.classList.add("task-due-date");
-            taskDueDate.textContent = task.dueDate;
+            taskDueDate.textContent = `Due: ${format(new Date(1984, 1, 11), "MMMM do yyyy")}`;
             taskCard.appendChild(taskDueDate);
 
             const taskIconArea = document.createElement("div");
