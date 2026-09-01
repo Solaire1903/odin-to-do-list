@@ -134,9 +134,9 @@ function loadApp() {
     projectContainer.createProject("Project 2");
     projectContainer.createProject("Project 3");
 
-    projects[0].createTask("Task 1", "This is Task 1", "Next Year", "low");
-    projects[1].createTask("Task 2", "This is Task 2", "Next Month", "medium");
-    projects[2].createTask("Task 3", "This is Task 3", "Next Week", "high");
+    projects[0].createTask("Task 1", "This is Task 1", "2026-10-07", "low");
+    projects[1].createTask("Task 2", "This is Task 2", "2026-09-01", "medium");
+    projects[2].createTask("Task 3", "This is Task 3", "2026-11-12", "high");
 
     view.renderProjects(projects);
     view.applyProjectEventListeners(handleActiveProject);
