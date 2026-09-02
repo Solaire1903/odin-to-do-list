@@ -2,11 +2,11 @@
  * Represents a single task in a To-Do-Project
  */
 class ToDoTask {
-    #title;
-    #description;
-    #dueDate;
-    #priority;
-    #id;
+    title;
+    description;
+    dueDate;
+    priority;
+    id;
 
     /**
      * @param {string} title 
@@ -15,13 +15,14 @@ class ToDoTask {
      * @param {*} priority 
      */
     constructor(title, description, dueDate, priority) {
-        this.#title = title;
-        this.#description = description;
-        this.#dueDate = dueDate;
-        this.#priority = priority;
-        this.#id = crypto.randomUUID();
+        this.title = title;
+        this.description = description;
+        this.dueDate = dueDate;
+        this.priority = priority;
+        this.id = crypto.randomUUID();
     }
 
+    /*
     get title() {
         return this.#title;
     }
@@ -57,6 +58,7 @@ class ToDoTask {
     get id() {
         return this.#id;
     }
+    */
 
 }
 
@@ -64,19 +66,20 @@ class ToDoTask {
  * Represents a single project with several tasks inside
  */
 class ToDoProject {
-    #title;
-    #tasks;
-    #id;
+    title;
+    tasks;
+    id;
 
     /**
      * @param {string} title 
      */
     constructor(title) {
-        this.#title = title;
-        this.#tasks = [];
-        this.#id = crypto.randomUUID();
+        this.title = title;
+        this.tasks = [];
+        this.id = crypto.randomUUID();
     }
 
+    /*
     get title() {
         return this.#title;
     }
@@ -92,6 +95,7 @@ class ToDoProject {
     get id() {
         return this.#id;
     }
+    */
 
     /**
      * Create a new task in the array
@@ -101,7 +105,7 @@ class ToDoProject {
      * @param {string} priority The priority of the task
      */
     createTask(title, description, dueDate, priority) {
-        this.#tasks.push(new ToDoTask(title, description, dueDate, priority));
+        this.tasks.push(new ToDoTask(title, description, dueDate, priority));
     }
 
     /**
@@ -111,8 +115,8 @@ class ToDoProject {
      * -1 if the task is not in the array
      */
     getTaskIndexbyId(taskId) {
-        for (let index in this.#tasks) {
-            if (this.#tasks[index].id === taskId) {
+        for (let index in this.tasks) {
+            if (this.tasks[index].id === taskId) {
                 return index;
             }
         }
@@ -125,9 +129,9 @@ class ToDoProject {
      * @param {string} taskId The id of the task to be removed
      */
     removeTask(taskId) {
-        for (let index in this.#tasks) {
-            if (this.#tasks[index].id === taskId) {
-                this.#tasks.splice(index, 1);
+        for (let index in this.tasks) {
+            if (this.tasks[index].id === taskId) {
+                this.tasks.splice(index, 1);
                 return;
             }
         }
@@ -138,13 +142,14 @@ class ToDoProject {
  * Class that holds all projects
  */
 class ToDoProjectContainer {
-    #projects;
-    #activeProject;
+    projects;
+    activeProject;
 
     constructor() {
-        this.#projects = [];
+        this.projects = [];
     }
 
+    /*
     get projects() {
         return this.#projects;
     }
@@ -156,13 +161,14 @@ class ToDoProjectContainer {
     set activeProject(activeProject) {
         this.#activeProject = activeProject;
     }
+    */
 
     /**
      * Creates a new project in the array
      * @param {string} title The title of the project
      */
     createProject(title) {
-        this.#projects.push(new ToDoProject(title));
+        this.projects.push(new ToDoProject(title));
     }
 
     /**
@@ -172,8 +178,8 @@ class ToDoProjectContainer {
      * -1 if the project is not in the array
      */
     getProjectIndexbyId(projectId) {
-        for (let index in this.#projects) {
-            if (this.#projects[index].id === projectId) {
+        for (let index in this.projects) {
+            if (this.projects[index].id === projectId) {
                 return index;
             }
         }
@@ -186,7 +192,7 @@ class ToDoProjectContainer {
      * @param {string} projectId The id of the project to be removed
      */
     removeProject(projectId) {
-        this.#projects.splice(this.getProjectIndexbyId(projectId), 1);
+        this.projects.splice(this.getProjectIndexbyId(projectId), 1);
     }
 }
 
@@ -194,14 +200,14 @@ class ToDoProjectContainer {
  * Represents the entire logic/model for the app
  */
 class Model {
-    #projectContainer
+    projectContainer
 
     constructor() {
-        this.#projectContainer = new ToDoProjectContainer();
+        this.projectContainer = new ToDoProjectContainer();
     }
 
     get projectContainer() {
-        return this.#projectContainer;
+        return this.projectContainer;
     }
 }
 
