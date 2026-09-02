@@ -12,7 +12,7 @@ class ToDoTask {
      * @param {string} title 
      * @param {string} description 
      * @param {string} dueDate 
-     * @param {*} priority 
+     * @param {string} priority 
      */
     constructor(title, description, dueDate, priority) {
         this.title = title;
@@ -21,45 +21,6 @@ class ToDoTask {
         this.priority = priority;
         this.id = crypto.randomUUID();
     }
-
-    /*
-    get title() {
-        return this.#title;
-    }
-
-    set title(title) {
-        this.#title = title;
-    }
-
-    get description() {
-        return this.#description
-    }
-
-    set description(description) {
-        this.#description = description;
-    }
-
-    get dueDate() {
-        return this.#dueDate;
-    }
-
-    set dueDate(dueDate) {
-        this.#dueDate = dueDate;
-    }
-
-    get priority() {
-        return this.#priority;
-    }
-
-    set priority(priority) {
-        this.#priority = priority;
-    }
-
-    get id() {
-        return this.#id;
-    }
-    */
-
 }
 
 /**
@@ -78,24 +39,6 @@ class ToDoProject {
         this.tasks = [];
         this.id = crypto.randomUUID();
     }
-
-    /*
-    get title() {
-        return this.#title;
-    }
-
-    set title(title) {
-        this.#title = title;
-    }
-
-    get tasks() {
-        return this.#tasks;
-    }
-
-    get id() {
-        return this.#id;
-    }
-    */
 
     /**
      * Create a new task in the array
@@ -148,20 +91,6 @@ class ToDoProjectContainer {
     constructor() {
         this.projects = [];
     }
-
-    /*
-    get projects() {
-        return this.#projects;
-    }
-
-    get activeProject() {
-        return this.#activeProject;
-    }
-
-    set activeProject(activeProject) {
-        this.#activeProject = activeProject;
-    }
-    */
 
     /**
      * Creates a new project in the array
