@@ -185,7 +185,6 @@ class View {
 
             if (!clickedElement.classList.contains("project-card-active")) {
                 const activeProject = document.getElementsByClassName("project-card-active").item(0);
-                console.log(activeProject);
                 activeProject?.classList.remove("project-card-active");
 
                 clickedElement.classList.add("project-card-active");
