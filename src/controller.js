@@ -154,10 +154,16 @@ function loadApp() {
 
     view.renderProjects(projects);
     view.applyProjectEventListeners(handleActiveProject);
-    view.renderActiveProjectTitle(projectContainer.activeProject.title);
 
-    view.renderTasks(projectContainer.activeProject.tasks);
-    view.applyTaskEventListeners(getTaskDescription);
+    if (projectContainer.activeProject !== null) {
+        console.log(projectContainer.activeProject);
+        view.renderActiveProjectTitle(projectContainer.activeProject.title);
+        view.renderTasks(projectContainer.activeProject.tasks);
+        view.applyTaskEventListeners(getTaskDescription);
+        view.showTaskButton();
+    }
+
+    localStorage.clear();
 }
 
 export default loadApp;

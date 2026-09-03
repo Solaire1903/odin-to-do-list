@@ -208,7 +208,10 @@ class Model {
             }
         }
 
-        this.projectContainer.activeProject = this.projectContainer.projects[0];
+        if (localContainer.activeProject !== null) {
+            this.projectContainer.activeProject = this.projectContainer.projects[0];
+        }
+        else this.projectContainer.activeProject = null;
     }
 }
 
