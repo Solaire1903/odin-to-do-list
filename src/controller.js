@@ -93,7 +93,7 @@ function handleNewTask(title, description, dueDate, priority) {
 
 function handleCompleteTask(taskId) {
     const completedTask = projectContainer.activeProject.getTaskIndexbyId(taskId);
-    completedTask.isCompleted = true;
+    completedTask.isCompleted = !completedTask.isCompleted;
 
     view.renderTasks(projectContainer.activeProject.tasks);
     view.applyTaskEventListeners(handleCompleteTask, getTaskDescription);
