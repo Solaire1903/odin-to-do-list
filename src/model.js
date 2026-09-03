@@ -6,19 +6,21 @@ class ToDoTask {
     description;
     dueDate;
     priority;
+    isCompleted;
     id;
 
     /**
-     * @param {string} title 
-     * @param {string} description 
-     * @param {string} dueDate 
-     * @param {string} priority 
+     * @param {string} title The title of the task
+     * @param {string} description The description of the task
+     * @param {string} dueDate The due date of the task
+     * @param {string} priority The priority of the task
      */
     constructor(title, description, dueDate, priority) {
         this.title = title;
         this.description = description;
         this.dueDate = dueDate;
         this.priority = priority;
+        this.isCompleted = false;
         this.id = crypto.randomUUID();
     }
 }
