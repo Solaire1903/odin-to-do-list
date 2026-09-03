@@ -14,13 +14,14 @@ class ToDoTask {
      * @param {string} description The description of the task
      * @param {string} dueDate The due date of the task
      * @param {string} priority The priority of the task
+     * @param {boolean} isCompleted The completion status of the task
      */
-    constructor(title, description, dueDate, priority) {
+    constructor(title, description, dueDate, priority, isCompleted) {
         this.title = title;
         this.description = description;
         this.dueDate = dueDate;
         this.priority = priority;
-        this.isCompleted = false;
+        this.isCompleted = isCompleted;
         this.id = crypto.randomUUID();
     }
 }
@@ -48,9 +49,10 @@ class ToDoProject {
      * @param {string} description The description of the task
      * @param {string} dueDate The due date of the task
      * @param {string} priority The priority of the task
+     * @param {boolean} isCompleted The completion status of the task
      */
-    createTask(title, description, dueDate, priority) {
-        this.tasks.push(new ToDoTask(title, description, dueDate, priority));
+    createTask(title, description, dueDate, priority, isCompleted) {
+        this.tasks.push(new ToDoTask(title, description, dueDate, priority, isCompleted));
     }
 
     /**
