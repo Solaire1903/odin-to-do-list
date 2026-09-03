@@ -174,9 +174,15 @@ class View {
         const deleteButtons = document.querySelectorAll(".project-delete-button");
 
         projectCards.forEach((button) => button.addEventListener("click", (event) => {
+            let clickedElement = event.target;
+
+            if (clickedElement.nodeName === "P") {
+                clickedElement = clickedElement.parentNode;
+            }
+
             this.showTaskButton();
 
-            handleActiveProject(event.target.dataset.id);
+            handleActiveProject(clickedElement.dataset.id);
         }));
 
         editButtons.forEach((button) => button.addEventListener("click", (event) => {
