@@ -13,7 +13,7 @@ function handleActiveProject(activeProjectId) {
 
     view.renderActiveProjectTitle(projectContainer.activeProject.title);
     view.renderTasks(projectContainer.activeProject.tasks);
-    view.applyTaskEventListeners(getTaskDescription);
+    view.applyTaskEventListeners(handleCompleteTask, getTaskDescription);
     model.updateLocalStorage();
 }
 
@@ -87,7 +87,16 @@ function handleDeleteProject(projectId) {
 function handleNewTask(title, description, dueDate, priority) {
     projectContainer.activeProject.createTask(title, description, dueDate, priority);
     view.renderTasks(projectContainer.activeProject.tasks);
-    view.applyTaskEventListeners(getTaskDescription);
+    view.applyTaskEventListeners(handleCompleteTask, getTaskDescription);
+    model.updateLocalStorage();
+}
+
+function handleCompleteTask(taskId) {
+    const completedTask = projectContainer.activeProject.getTaskIndexbyId(taskId);
+    completedTask.isCompleted = true;
+
+    view.renderTasks(projectContainer.activeProject.tasks);
+    view.applyTaskEventListeners(handleCompleteTask, getTaskDescription);
     model.updateLocalStorage();
 }
 
@@ -109,7 +118,7 @@ function handleEditTask(taskId, title, description, dueDate, priority) {
     editedTask.priority = priority;
 
     view.renderTasks(projectContainer.activeProject.tasks);
-    view.applyTaskEventListeners(getTaskDescription);
+    view.applyTaskEventListeners(handleCompleteTask, getTaskDescription);
     model.updateLocalStorage();
 }
 
@@ -121,7 +130,7 @@ function handleDeleteTask(taskId) {
     projectContainer.activeProject.removeTask(taskId);
 
     view.renderTasks(projectContainer.activeProject.tasks);
-    view.applyTaskEventListeners(getTaskDescription);
+    view.applyTaskEventListeners(handleCompleteTask, getTaskDescription);
     model.updateLocalStorage();
 }
 
