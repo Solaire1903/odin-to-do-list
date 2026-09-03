@@ -1,9 +1,8 @@
 import model from "./model.js";
 import view from "./view.js";
 
-const projectContainer = model.projectContainer;
-const projects = projectContainer.projects;
-
+let projectContainer;
+let projects;
 
 /**
  * Sets a clicked project to active and renders it's tasks to the page
@@ -130,6 +129,21 @@ function handleDeleteTask(taskId) {
  * Loads the app on initial startup
  */
 function loadApp() {
+    projectContainer = model.projectContainer;
+    projects = projectContainer.projects;
+
+    //Read localStorage if available
+    if (localStorage.getItem("projectContainer")) {
+        model.readLocalStorage();
+    }
+    //Create default project and Task otherwise
+    else {
+        projectContainer.createProject("Your Project");
+        projectContainer.activeProject = projects[0];
+
+        projects[0].createTask("Your Task", "Description goes here", "2028-10-07", "low");
+    }
+
     view.applyInitialEventListeners(
         handleNewProject,
         handleEditProject,
@@ -138,19 +152,12 @@ function loadApp() {
         handleEditTask,
         handleDeleteTask);
 
-    projectContainer.createProject("Project 1");
-    projectContainer.activeProject = projects[0];
-
-    projects[0].createTask("Task 1", "This is Task 1", "2026-10-07", "low");
-
     view.renderProjects(projects);
     view.applyProjectEventListeners(handleActiveProject);
     view.renderActiveProjectTitle(projectContainer.activeProject.title);
 
     view.renderTasks(projectContainer.activeProject.tasks);
     view.applyTaskEventListeners(getTaskDescription);
-
-    model.updateLocalStorage();
 }
 
 export default loadApp;

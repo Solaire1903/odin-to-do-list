@@ -140,6 +140,15 @@ class Model {
     }
 
     /**
+     * Empties the projects array of the projectContainer
+     */
+    resetProjectContainer() {
+        for (let i = 0; i < this.projectContainer.projects.length; ++i) {
+            this.projectContainer.projects.pop();
+        }
+    }
+    
+    /**
      * Checks, if the given storage type is available to use
      * @param {string} type The storage type
      * @returns True, if storage is available
@@ -176,7 +185,7 @@ class Model {
      * saved in localStorage
      */
     readLocalStorage() {
-        this.projectContainer = new ToDoProjectContainer();
+        this.resetProjectContainer();
 
         const localContainer = JSON.parse(localStorage.getItem("projectContainer"));
 
@@ -198,6 +207,8 @@ class Model {
                 );
             }
         }
+
+        this.projectContainer.activeProject = this.projectContainer.projects[0];
     }
 }
 
