@@ -197,15 +197,21 @@ class View {
 
     /**
      * Applies the event listeners for all current task cards
+     * @param {function} handleCompleteTask Function to handle task completion
      * @param {function} getTaskDescription Function to retrieve a task's description
      */
-    applyTaskEventListeners(getTaskDescription) {
+    applyTaskEventListeners(handleCompleteTask, getTaskDescription) {
         const checkboxButtons = document.querySelectorAll(".task-checkbox");
         const descriptionButtons = document.querySelectorAll(".description-button");
         const editButtons = document.querySelectorAll(".task-edit-button");
         const deleteButtons = document.querySelectorAll(".task-delete-button");
 
-        checkboxButtons.forEach((button) => button.addEventListener("click", () => { }));
+        checkboxButtons.forEach((button) => button.addEventListener("click", (event) => {
+            event.stopImmediatePropagation();
+
+            const selectedTaskId = event.target.parentNode.parentNode.parentNode.dataset.id
+            handleCompleteTask(selectedTaskId);
+         }));
 
         descriptionButtons.forEach((button) => button.addEventListener("click", (event) => {
             event.stopImmediatePropagation();
