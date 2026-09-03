@@ -139,8 +139,6 @@ function loadApp() {
     //Create default project and Task otherwise
     else {
         projectContainer.createProject("Your Project");
-        projectContainer.activeProject = projects[0];
-
         projects[0].createTask("Your Task", "Description goes here", "2028-10-07", "low");
     }
 
@@ -154,16 +152,6 @@ function loadApp() {
 
     view.renderProjects(projects);
     view.applyProjectEventListeners(handleActiveProject);
-
-    if (projectContainer.activeProject !== null) {
-        console.log(projectContainer.activeProject);
-        view.renderActiveProjectTitle(projectContainer.activeProject.title);
-        view.renderTasks(projectContainer.activeProject.tasks);
-        view.applyTaskEventListeners(getTaskDescription);
-        view.showTaskButton();
-    }
-
-    localStorage.clear();
 }
 
 export default loadApp;

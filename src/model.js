@@ -208,10 +208,7 @@ class Model {
             }
         }
 
-        if (localContainer.activeProject !== null) {
-            this.projectContainer.activeProject = this.projectContainer.projects[0];
-        }
-        else this.projectContainer.activeProject = null;
+        this.projectContainer.activeProject = null;
     }
 }
 
