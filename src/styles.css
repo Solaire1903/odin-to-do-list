@@ -91,7 +91,7 @@ li+li {
 }
 
 .project-card>div>button {
-  background-color: rebeccapurple;
+  background-color: inherit;
 
   display: flex;
 }
@@ -99,6 +99,10 @@ li+li {
 .project-card>div>button>img {
   height: 20px;
   width: auto;
+}
+
+.project-card.project-card-active {
+  background-color: darkmagenta;
 }
 
 #project-content {
@@ -154,7 +158,7 @@ li+li {
 }
 
 .task-icon-area>button {
-  background-color: darkgray;
+  background-color: inherit;
 }
 
 .task-icon-area>button>img {
