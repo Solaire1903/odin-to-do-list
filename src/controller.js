@@ -85,7 +85,7 @@ function handleDeleteProject(projectId) {
  * @param {string} priority The task priority
  */
 function handleNewTask(title, description, dueDate, priority) {
-    projectContainer.activeProject.createTask(title, description, dueDate, priority);
+    projectContainer.activeProject.createTask(title, description, dueDate, priority, false);
     view.renderTasks(projectContainer.activeProject.tasks);
     view.applyTaskEventListeners(handleCompleteTask, getTaskDescription);
     model.updateLocalStorage();

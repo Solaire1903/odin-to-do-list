@@ -207,7 +207,8 @@ class Model {
                     currentLocalTask.title,
                     currentLocalTask.description,
                     currentLocalTask.dueDate,
-                    currentLocalTask.priority
+                    currentLocalTask.priority,
+                    currentLocalTask.isCompleted
                 );
             }
         }
