@@ -83,7 +83,7 @@ function handleDeleteProject(projectId) {
  * @param {string} title The task title
  * @param {string} description The task description
  * @param {string} dueDate The task due date
- * @param {*} priority The task priority
+ * @param {string} priority The task priority
  */
 function handleNewTask(title, description, dueDate, priority) {
     projectContainer.activeProject.createTask(title, description, dueDate, priority);
@@ -98,7 +98,7 @@ function handleNewTask(title, description, dueDate, priority) {
  * @param {string} title The new title of the task
  * @param {string} description The new description of the task
  * @param {string} dueDate The new due date of the task
- * @param {*} priority The new priority of the task
+ * @param {string} priority The new priority of the task
  */
 function handleEditTask(taskId, title, description, dueDate, priority) {
     const editedTaskIndex = projectContainer.activeProject.getTaskIndexbyId(taskId);

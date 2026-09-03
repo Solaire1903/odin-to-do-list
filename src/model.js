@@ -162,6 +162,9 @@ class Model {
         }
     }
 
+    /**
+     * Saves projectContainer state to localStorage
+     */
     updateLocalStorage() {
         if (this.storageAvailable("localStorage")) {
             localStorage.setItem("projectContainer", JSON.stringify(this.projectContainer));
