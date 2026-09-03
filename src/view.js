@@ -97,9 +97,6 @@ class View {
                 }
             }
 
-
-
-
             listElement.appendChild(taskCard);
 
             const taskCheckbox = document.createElement("button");
@@ -129,17 +126,14 @@ class View {
 
             const descriptionButton = document.createElement("button");
             descriptionButton.classList.add("description-button");
-            descriptionButton.style.backgroundColor = taskCard.style.backgroundColor;
             taskIconArea.appendChild(descriptionButton);
 
             const editButton = document.createElement("button");
             editButton.classList.add("task-edit-button");
-            editButton.style.backgroundColor = taskCard.style.backgroundColor;
             taskIconArea.appendChild(editButton);
 
             const deleteButton = document.createElement("button");
             deleteButton.classList.add("task-delete-button");
-            deleteButton.style.backgroundColor = taskCard.style.backgroundColor;
             taskIconArea.appendChild(deleteButton);
 
             const descriptionButtonImage = document.createElement("img");
@@ -189,9 +183,11 @@ class View {
                 clickedElement = clickedElement.parentNode;
             }
 
-            this.showTaskButton();
+            clickedElement.classList.add("project-card-active");
 
             handleActiveProject(clickedElement.dataset.id);
+
+            this.showTaskButton();
         }));
 
         editButtons.forEach((button) => button.addEventListener("click", (event) => {
