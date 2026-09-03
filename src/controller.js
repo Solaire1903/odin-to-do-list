@@ -119,29 +119,6 @@ function handleDeleteTask(taskId) {
 }
 
 /**
- * Checks, if the given storage type is available to use
- * @param {string} type The storage type
- * @returns True, if storage is available
- */
-function storageAvailable(type) {
-    let storage;
-    try {
-        storage = window[type];
-        const x = "__storage_test__";
-        storage.setItem(x, x);
-        storage.removeItem(x);
-        return true;
-    } catch (e) {
-        return (
-            e instanceof DOMException &&
-            e.name === "QuotaExceededError" &&
-            storage &&
-            storage.length !== 0
-        );
-    }
-}
-
-/**
  * Loads the app on initial startup
  */
 function loadApp() {
@@ -154,21 +131,18 @@ function loadApp() {
         handleDeleteTask);
 
     projectContainer.createProject("Project 1");
-    projectContainer.createProject("Project 2");
-    projectContainer.createProject("Project 3");
+    projectContainer.activeProject = projects[0];
 
     projects[0].createTask("Task 1", "This is Task 1", "2026-10-07", "low");
-    projects[1].createTask("Task 2", "This is Task 2", "2026-09-01", "medium");
-    projects[2].createTask("Task 3", "This is Task 3", "2026-11-12", "high");
 
     view.renderProjects(projects);
     view.applyProjectEventListeners(handleActiveProject);
-
-    projectContainer.activeProject = projects[0];
-
     view.renderActiveProjectTitle(projectContainer.activeProject.title);
+
     view.renderTasks(projectContainer.activeProject.tasks);
     view.applyTaskEventListeners(getTaskDescription);
+
+    model.updateLocalStorage();
 }
 
 export default loadApp;
