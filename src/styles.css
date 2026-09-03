@@ -116,12 +116,17 @@ li+li {
 .task-card {
   min-width: 500px;
   padding: 10px;
-  background-color: pink;
+  background-color: darkgray;
 
   display: grid;
   grid-template-columns: 40px 5fr 2fr;
   grid-template-rows: 15px 15px;
   gap: 10px;
+}
+
+.task-card.task-card-completed {
+  color: grey;
+  text-decoration: line-through;
 }
 
 .task-checkbox {
@@ -149,7 +154,7 @@ li+li {
 }
 
 .task-icon-area>button {
-  background-color: pink;
+  background-color: darkgray;
 }
 
 .task-icon-area>button>img {

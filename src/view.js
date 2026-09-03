@@ -76,20 +76,29 @@ class View {
             taskList.appendChild(listElement);
 
             const taskCard = document.createElement("div");
+
             taskCard.classList.add("task-card");
             taskCard.dataset.id = task.id;
 
-            switch (task.priority) {
-                case "low":
-                    taskCard.style.backgroundColor = "green";
-                    break;
-                case "medium":
-                    taskCard.style.backgroundColor = "yellow";
-                    break;
-                case "high":
-                    taskCard.style.backgroundColor = "red";
-                    break;
+            if (task.isCompleted) {
+                taskCard.classList.add("task-card-completed");
             }
+            else {
+                switch (task.priority) {
+                    case "low":
+                        taskCard.style.backgroundColor = "green";
+                        break;
+                    case "medium":
+                        taskCard.style.backgroundColor = "yellow";
+                        break;
+                    case "high":
+                        taskCard.style.backgroundColor = "red";
+                        break;
+                }
+            }
+
+
+
 
             listElement.appendChild(taskCard);
 
@@ -220,7 +229,7 @@ class View {
 
             const selectedTaskId = event.target.parentNode.dataset.id;
             handleCompleteTask(selectedTaskId);
-         }));
+        }));
 
         descriptionButtons.forEach((button) => button.addEventListener("click", (event) => {
             event.stopImmediatePropagation();
