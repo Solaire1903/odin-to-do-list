@@ -170,6 +170,35 @@ class Model {
             localStorage.setItem("projectContainer", JSON.stringify(this.projectContainer));
         }
     }
+
+    /**
+     * Replaces the current projectContainer state with the one
+     * saved in localStorage
+     */
+    readLocalStorage() {
+        this.projectContainer = new ToDoProjectContainer();
+
+        const localContainer = JSON.parse(localStorage.getItem("projectContainer"));
+
+        for (let projectIndex in localContainer.projects) {
+            const currentLocalProject = localContainer.projects[projectIndex];
+
+            this.projectContainer.createProject(currentLocalProject.title);
+            const currentProject = this.projectContainer.projects[projectIndex];
+
+            for (let taskIndex in currentLocalProject.tasks) {
+                
+                const currentLocalTask = currentLocalProject.tasks[taskIndex];
+
+                currentProject.createTask(
+                    currentLocalTask.title,
+                    currentLocalTask.description,
+                    currentLocalTask.dueDate,
+                    currentLocalTask.priority
+                );
+            }
+        }
+    }
 }
 
 export default new Model();
