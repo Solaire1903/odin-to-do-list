@@ -95,6 +95,9 @@ class View {
 
             const taskCheckbox = document.createElement("button");
             taskCheckbox.classList.add("task-checkbox");
+
+            if (task.isCompleted) taskCheckbox.style.backgroundColor = "green";
+
             taskCard.appendChild(taskCheckbox);
 
             const taskTitle = document.createElement("p");
@@ -209,14 +212,14 @@ class View {
         checkboxButtons.forEach((button) => button.addEventListener("click", (event) => {
             event.stopImmediatePropagation();
 
-            const selectedTaskId = event.target.parentNode.parentNode.parentNode.dataset.id
+            const selectedTaskId = event.target.parentNode.dataset.id;
             handleCompleteTask(selectedTaskId);
          }));
 
         descriptionButtons.forEach((button) => button.addEventListener("click", (event) => {
             event.stopImmediatePropagation();
 
-            const selectedTaskId = event.target.parentNode.parentNode.parentNode.dataset.id
+            const selectedTaskId = event.target.parentNode.parentNode.parentNode.dataset.id;
             this.#currentTaskId = selectedTaskId;
 
             const taskDescription = document.getElementById("task-description");
@@ -228,7 +231,7 @@ class View {
         editButtons.forEach((button) => button.addEventListener("click", (event) => {
             event.stopImmediatePropagation();
 
-            const selectedTaskId = event.target.parentNode.parentNode.parentNode.dataset.id
+            const selectedTaskId = event.target.parentNode.parentNode.parentNode.dataset.id;
             this.#currentTaskId = selectedTaskId;
 
             document.getElementById("edit-task-window").showModal();
@@ -237,7 +240,7 @@ class View {
         deleteButtons.forEach((button) => button.addEventListener("click", (event) => {
             event.stopImmediatePropagation();
 
-            const selectedTaskId = event.target.parentNode.parentNode.parentNode.dataset.id
+            const selectedTaskId = event.target.parentNode.parentNode.parentNode.dataset.id;
             this.#currentTaskId = selectedTaskId;
 
             document.getElementById("delete-task-window").showModal();
