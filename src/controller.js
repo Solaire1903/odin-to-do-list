@@ -15,6 +15,7 @@ function handleActiveProject(activeProjectId) {
     view.renderActiveProjectTitle(projectContainer.activeProject.title);
     view.renderTasks(projectContainer.activeProject.tasks);
     view.applyTaskEventListeners(getTaskDescription);
+    model.updateLocalStorage();
 }
 
 /**
@@ -25,6 +26,7 @@ function handleNewProject(title) {
     projectContainer.createProject(title);
     view.renderProjects(projects);
     view.applyProjectEventListeners(handleActiveProject);
+    model.updateLocalStorage();
 }
 
 /**
@@ -52,6 +54,8 @@ function handleEditProject(projectId, title) {
         projectContainer.activeProject.id === projectId) {
         view.renderActiveProjectTitle(projectContainer.activeProject.title);
     }
+
+    model.updateLocalStorage();
 }
 
 /**
@@ -71,6 +75,7 @@ function handleDeleteProject(projectId) {
     }
 
     view.applyProjectEventListeners(handleActiveProject);
+    model.updateLocalStorage();
 }
 
 /**
@@ -84,6 +89,7 @@ function handleNewTask(title, description, dueDate, priority) {
     projectContainer.activeProject.createTask(title, description, dueDate, priority);
     view.renderTasks(projectContainer.activeProject.tasks);
     view.applyTaskEventListeners(getTaskDescription);
+    model.updateLocalStorage();
 }
 
 /**
@@ -105,6 +111,7 @@ function handleEditTask(taskId, title, description, dueDate, priority) {
 
     view.renderTasks(projectContainer.activeProject.tasks);
     view.applyTaskEventListeners(getTaskDescription);
+    model.updateLocalStorage();
 }
 
 /**
@@ -116,6 +123,7 @@ function handleDeleteTask(taskId) {
 
     view.renderTasks(projectContainer.activeProject.tasks);
     view.applyTaskEventListeners(getTaskDescription);
+    model.updateLocalStorage();
 }
 
 /**

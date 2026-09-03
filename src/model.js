@@ -165,7 +165,6 @@ class Model {
     updateLocalStorage() {
         if (this.storageAvailable("localStorage")) {
             localStorage.setItem("projectContainer", JSON.stringify(this.projectContainer));
-            console.log("Test");
         }
     }
 }
