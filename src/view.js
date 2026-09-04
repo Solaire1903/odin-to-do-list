@@ -172,7 +172,6 @@ class View {
 
         projectCards.forEach((button) => button.addEventListener("click", (event) => {
             let clickedElement = event.target;
-
             if (clickedElement.nodeName === "P") {
                 clickedElement = clickedElement.parentNode;
             }
@@ -192,7 +191,12 @@ class View {
         editButtons.forEach((button) => button.addEventListener("click", (event) => {
             event.stopImmediatePropagation();
 
-            const selectedProjectId = event.target.parentNode.parentNode.parentNode.dataset.id
+            let clickedElement = event.target;
+            if (clickedElement.nodeName === "IMG") {
+                clickedElement = clickedElement.parentNode;
+            }
+
+            const selectedProjectId = clickedElement.parentNode.parentNode.dataset.id
             this.#currentProjectId = selectedProjectId;
 
             document.getElementById("edit-project-window").showModal();
@@ -201,7 +205,13 @@ class View {
         deleteButtons.forEach((button) => button.addEventListener("click", (event) => {
             event.stopImmediatePropagation();
 
-            const selectedProjectId = event.target.parentNode.parentNode.parentNode.dataset.id
+            let clickedElement = event.target;
+            if (clickedElement.nodeName === "IMG") {
+                clickedElement = clickedElement.parentNode;
+            }
+
+            const selectedProjectId = clickedElement.parentNode.parentNode.dataset.id
+
             this.#currentProjectId = selectedProjectId;
 
             document.getElementById("delete-project-window").showModal();
@@ -229,7 +239,12 @@ class View {
         descriptionButtons.forEach((button) => button.addEventListener("click", (event) => {
             event.stopImmediatePropagation();
 
-            const selectedTaskId = event.target.parentNode.parentNode.parentNode.dataset.id;
+            let clickedElement = event.target;
+            if (clickedElement.nodeName === "IMG") {
+                clickedElement = clickedElement.parentNode;
+            }
+
+            const selectedTaskId = clickedElement.parentNode.parentNode.dataset.id
             this.#currentTaskId = selectedTaskId;
 
             const taskDescription = document.getElementById("task-description");
@@ -241,7 +256,12 @@ class View {
         editButtons.forEach((button) => button.addEventListener("click", (event) => {
             event.stopImmediatePropagation();
 
-            const selectedTaskId = event.target.parentNode.parentNode.parentNode.dataset.id;
+            let clickedElement = event.target;
+            if (clickedElement.nodeName === "IMG") {
+                clickedElement = clickedElement.parentNode;
+            }
+
+            const selectedTaskId = clickedElement.parentNode.parentNode.dataset.id
             this.#currentTaskId = selectedTaskId;
 
             document.getElementById("edit-task-window").showModal();
@@ -250,7 +270,12 @@ class View {
         deleteButtons.forEach((button) => button.addEventListener("click", (event) => {
             event.stopImmediatePropagation();
 
-            const selectedTaskId = event.target.parentNode.parentNode.parentNode.dataset.id;
+            let clickedElement = event.target;
+            if (clickedElement.nodeName === "IMG") {
+                clickedElement = clickedElement.parentNode;
+            }
+
+            const selectedTaskId = clickedElement.parentNode.parentNode.dataset.id
             this.#currentTaskId = selectedTaskId;
 
             document.getElementById("delete-task-window").showModal();
