@@ -112,10 +112,10 @@ li+li {
 }
 
 #add-project-button {
-  width: 180px;
-  height: 50px;
+  width: 150px;
+  height: 30px;
   border-radius: 15px;
-  font-size: 1.2em;
+  font-size: 1em;
   
   align-self: center;
 }
