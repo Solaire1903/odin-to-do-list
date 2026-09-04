@@ -247,9 +247,16 @@ class View {
             const selectedTaskId = clickedElement.parentNode.parentNode.dataset.id
             this.#currentTaskId = selectedTaskId;
 
-            const taskDescription = document.getElementById("task-description");
-            taskDescription.textContent = getTaskDescription(this.#currentTaskId);
+            const taskDescriptionElement = document.getElementById("task-description");
+            let taskDescription = getTaskDescription(this.#currentTaskId);
+            
+            if (taskDescription === "") {
+                taskDescription = "No Description";
+                taskDescriptionElement.style.fontStyle = "italic";
+            }
+            else taskDescriptionElement.style.fontStyle = "normal";
 
+            taskDescriptionElement.textContent = taskDescription;
             document.getElementById("description-window").showModal();
         }));
 
