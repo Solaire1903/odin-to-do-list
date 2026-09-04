@@ -111,7 +111,8 @@ li+li {
   background-color: darkmagenta;
 }
 
-#add-project-button {
+#add-project-button,
+#add-task-button {
   width: 150px;
   height: 30px;
   border-radius: 15px;
