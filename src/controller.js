@@ -11,8 +11,8 @@ let projects;
 function handleActiveProject(activeProjectId) {
     projectContainer.activeProject = projects[projectContainer.getProjectIndexbyId(activeProjectId)];
 
-    view.renderActiveProjectTitle(projectContainer.activeProject.title);
-    view.renderTasks(projectContainer.activeProject.tasks);
+    view.renderActiveProjectTitle(projectContainer.activeProject?.title);
+    view.renderTasks(projectContainer.activeProject?.tasks);
     view.applyTaskEventListeners(handleCompleteTask, getTaskDescription);
     model.updateLocalStorage();
 }
@@ -23,7 +23,7 @@ function handleActiveProject(activeProjectId) {
  */
 function handleNewProject(title) {
     projectContainer.createProject(title);
-    view.renderProjects(projects);
+    view.renderProjects(projects, projectContainer.activeProject?.id);
     view.applyProjectEventListeners(handleActiveProject);
     model.updateLocalStorage();
 }
@@ -34,8 +34,8 @@ function handleNewProject(title) {
  * @returns The description of the task
  */
 function getTaskDescription(taskId) {
-    return projectContainer.activeProject.tasks[
-        projectContainer.activeProject.getTaskIndexbyId(taskId)
+    return projectContainer.activeProject?.tasks[
+        projectContainer.activeProject?.getTaskIndexbyId(taskId)
     ].description;
 }
 
@@ -46,12 +46,12 @@ function getTaskDescription(taskId) {
  */
 function handleEditProject(projectId, title) {
     projects[projectContainer.getProjectIndexbyId(projectId)].title = title;
-    view.renderProjects(projects);
+    view.renderProjects(projects, projectContainer.activeProject?.id);
     view.applyProjectEventListeners(handleActiveProject);
 
     if (projectContainer.activeProject !== null &&
-        projectContainer.activeProject.id === projectId) {
-        view.renderActiveProjectTitle(projectContainer.activeProject.title);
+        projectContainer.activeProject?.id === projectId) {
+        view.renderActiveProjectTitle(projectContainer.activeProject?.title);
     }
 
     model.updateLocalStorage();
@@ -63,10 +63,10 @@ function handleEditProject(projectId, title) {
  */
 function handleDeleteProject(projectId) {
     projectContainer.removeProject(projectId);
-    view.renderProjects(projects);
+    view.renderProjects(projects, projectContainer.activeProject?.id);
 
     if (projectContainer.activeProject !== null &&
-        projectContainer.activeProject.id === projectId) {
+        projectContainer.activeProject?.id === projectId) {
         projectContainer.activeProject = null;
         view.renderActiveProjectTitle("");
         view.renderTasks([]);
@@ -85,19 +85,19 @@ function handleDeleteProject(projectId) {
  * @param {string} priority The task priority
  */
 function handleNewTask(title, description, dueDate, priority) {
-    projectContainer.activeProject.createTask(title, description, dueDate, priority, false);
-    view.renderTasks(projectContainer.activeProject.tasks);
+    projectContainer.activeProject?.createTask(title, description, dueDate, priority, false);
+    view.renderTasks(projectContainer.activeProject?.tasks);
     view.applyTaskEventListeners(handleCompleteTask, getTaskDescription);
     model.updateLocalStorage();
 }
 
 function handleCompleteTask(taskId) {
-    const completedTaskIndex = projectContainer.activeProject.getTaskIndexbyId(taskId);
-    const completedTask = projectContainer.activeProject.tasks[completedTaskIndex];
+    const completedTaskIndex = projectContainer.activeProject?.getTaskIndexbyId(taskId);
+    const completedTask = projectContainer.activeProject?.tasks[completedTaskIndex];
 
     completedTask.isCompleted = !completedTask.isCompleted;
 
-    view.renderTasks(projectContainer.activeProject.tasks);
+    view.renderTasks(projectContainer.activeProject?.tasks);
     view.applyTaskEventListeners(handleCompleteTask, getTaskDescription);
     model.updateLocalStorage();
 }
@@ -111,15 +111,15 @@ function handleCompleteTask(taskId) {
  * @param {string} priority The new priority of the task
  */
 function handleEditTask(taskId, title, description, dueDate, priority) {
-    const editedTaskIndex = projectContainer.activeProject.getTaskIndexbyId(taskId);
-    const editedTask = projectContainer.activeProject.tasks[editedTaskIndex];
+    const editedTaskIndex = projectContainer.activeProject?.getTaskIndexbyId(taskId);
+    const editedTask = projectContainer.activeProject?.tasks[editedTaskIndex];
 
     editedTask.title = title;
     editedTask.description = description;
     editedTask.dueDate = dueDate;
     editedTask.priority = priority;
 
-    view.renderTasks(projectContainer.activeProject.tasks);
+    view.renderTasks(projectContainer.activeProject?.tasks);
     view.applyTaskEventListeners(handleCompleteTask, getTaskDescription);
     model.updateLocalStorage();
 }
@@ -129,9 +129,9 @@ function handleEditTask(taskId, title, description, dueDate, priority) {
  * @param {string} taskId The id of the task to delete
  */
 function handleDeleteTask(taskId) {
-    projectContainer.activeProject.removeTask(taskId);
+    projectContainer.activeProject?.removeTask(taskId);
 
-    view.renderTasks(projectContainer.activeProject.tasks);
+    view.renderTasks(projectContainer.activeProject?.tasks);
     view.applyTaskEventListeners(handleCompleteTask, getTaskDescription);
     model.updateLocalStorage();
 }

@@ -12,8 +12,9 @@ class View {
     /**
      * Renders projects from an array to the site
      * @param {Array.<ToDoProject>} projects The array of projects to be rendered
+     * @param {string} activeProjectId The id of the active project
      */
-    renderProjects(projects) {
+    renderProjects(projects, activeProjectId) {
         const projectList = document.getElementById("project-list")
         projectList.innerHTML = "";
 
@@ -23,6 +24,9 @@ class View {
 
             const projectCard = document.createElement("div");
             projectCard.classList.add("project-card");
+            if (activeProjectId !== undefined && project.id === activeProjectId) {
+                projectCard.classList.add("project-card-active");
+            }
             projectCard.dataset.id = project.id;
             listElement.appendChild(projectCard);
 
@@ -145,7 +149,7 @@ class View {
             deleteButtonImage.alt = "Delete";
             deleteButton.appendChild(deleteButtonImage);
 
-            
+
         }
     }
 
@@ -251,7 +255,7 @@ class View {
 
             const taskDescriptionElement = document.getElementById("task-description");
             let taskDescription = getTaskDescription(this.#currentTaskId);
-            
+
             if (taskDescription === "") {
                 taskDescription = "No Description";
                 taskDescriptionElement.style.fontStyle = "italic";
