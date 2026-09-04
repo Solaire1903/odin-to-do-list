@@ -76,10 +76,8 @@ class View {
             taskList.appendChild(listElement);
 
             const taskCard = document.createElement("div");
-
             taskCard.classList.add("task-card");
             taskCard.dataset.id = task.id;
-
             if (task.isCompleted) {
                 taskCard.classList.add("task-card-completed");
             }
@@ -96,14 +94,11 @@ class View {
                         break;
                 }
             }
-
             listElement.appendChild(taskCard);
 
             const taskCheckbox = document.createElement("button");
             taskCheckbox.classList.add("task-checkbox");
-
             if (task.isCompleted) taskCheckbox.style.backgroundColor = "green";
-
             taskCard.appendChild(taskCheckbox);
 
             const taskTitle = document.createElement("p");
@@ -117,7 +112,6 @@ class View {
             const dateValues = task.dueDate.split('-');
             taskDueDate.textContent = `Due: ${format(new Date(
                 dateValues[0], dateValues[1] - 1, dateValues[2]), "MMMM do yyyy")}`;
-
             taskCard.appendChild(taskDueDate);
 
             const taskIconArea = document.createElement("div");
