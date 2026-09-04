@@ -60,7 +60,7 @@ dialog>div>form {
 }
 
 #sidebar {
-  min-width: 250px;
+  min-width: 380px;
   background-color: pink;
 
   grid-row: 2 / span 1;
@@ -70,12 +70,17 @@ dialog>div>form {
   gap: 20px;
 }
 
+#sidebar>h2 {
+  font-size: 1.8em;
+}
+
 li+li {
   margin-top: 10px;
 }
 
 .project-card {
-  padding: 5px;
+  padding: 10px;
+  font-size: 1.3em;
   color: white;
   background-color: rebeccapurple;
   cursor: pointer;
@@ -97,7 +102,7 @@ li+li {
 }
 
 .project-card>div>button>img {
-  height: 20px;
+  height: 30px;
   width: auto;
 }
 
