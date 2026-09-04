@@ -70,6 +70,21 @@ dialog>div>form>button {
   align-self: center;
 }
 
+header,
+#sidebar,
+#project-content {
+  padding: 20px;
+}
+
+#project-list,
+#task-list {
+  list-style: none;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 #delete-project-button,
 #delete-task-button {
   margin-top: 10px;
@@ -155,6 +170,12 @@ li+li {
   gap: 15px;
 }
 
+#description-window {
+  width: 300px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
 #task-priority-input,
 #edit-task-priority-input {
   display: flex;
@@ -223,19 +244,4 @@ li+li {
 .task-icon-area>button>img {
   height: 30px;
   width: auto;
-}
-
-header,
-#sidebar,
-#project-content {
-  padding: 20px;
-}
-
-#project-list,
-#task-list {
-  list-style: none;
-
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
 }
