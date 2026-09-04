@@ -80,6 +80,7 @@ li+li {
 
 .project-card {
   padding: 10px;
+  border-radius: 5px;
   font-size: 1.3em;
   color: white;
   background-color: rebeccapurple;
