@@ -41,15 +41,15 @@ class View {
             deleteButton.classList.add("project-delete-button");
             buttonContainer.appendChild(deleteButton);
 
-            const deleteButtonImage = document.createElement("img");
-            deleteButtonImage.src = trashCanSVG;
-            deleteButtonImage.alt = "Delete";
-            deleteButton.appendChild(deleteButtonImage);
-
             const editButtonImage = document.createElement("img");
             editButtonImage.src = pencilSVG;
             editButtonImage.alt = "Edit";
             editButton.appendChild(editButtonImage);
+
+            const deleteButtonImage = document.createElement("img");
+            deleteButtonImage.src = trashCanSVG;
+            deleteButtonImage.alt = "Delete";
+            deleteButton.appendChild(deleteButtonImage);
         }
     }
 
@@ -84,13 +84,13 @@ class View {
             else {
                 switch (task.priority) {
                     case "low":
-                        taskCard.style.backgroundColor = "green";
+                        taskCard.style.backgroundColor = "lightgreen";
                         break;
                     case "medium":
-                        taskCard.style.backgroundColor = "yellow";
+                        taskCard.style.backgroundColor = "rgb(255, 255, 108)";
                         break;
                     case "high":
-                        taskCard.style.backgroundColor = "red";
+                        taskCard.style.backgroundColor = "rgb(237, 82, 82)";
                         break;
                 }
             }
@@ -98,7 +98,7 @@ class View {
 
             const taskCheckbox = document.createElement("button");
             taskCheckbox.classList.add("task-checkbox");
-            if (task.isCompleted) taskCheckbox.style.backgroundColor = "green";
+            if (task.isCompleted) taskCheckbox.style.backgroundColor = "lightgreen";
             taskCard.appendChild(taskCheckbox);
 
             const taskTitle = document.createElement("p");
@@ -135,15 +135,17 @@ class View {
             descriptionButtonImage.alt = "Description";
             descriptionButton.appendChild(descriptionButtonImage);
 
+            const editButtonImage = document.createElement("img");
+            editButtonImage.src = pencilSVG;
+            editButtonImage.alt = "Edit";
+            editButton.appendChild(editButtonImage);
+
             const deleteButtonImage = document.createElement("img");
             deleteButtonImage.src = trashCanSVG;
             deleteButtonImage.alt = "Delete";
             deleteButton.appendChild(deleteButtonImage);
 
-            const editButtonImage = document.createElement("img");
-            editButtonImage.src = pencilSVG;
-            editButtonImage.alt = "Edit";
-            editButton.appendChild(editButtonImage);
+            
         }
     }
 

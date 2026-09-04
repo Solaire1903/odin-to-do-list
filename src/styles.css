@@ -1,3 +1,15 @@
+:root {
+  --primary-color: rgb(42, 19, 65);
+  --secondary-color: rgb(87, 52, 122);
+  --content-color: rgb(142, 98, 186);
+  --project-color: rgb(243, 189, 136);
+  --project-color-active: rgb(239, 161, 83);
+  --input-color: beige;
+  --delete-button-color: rgb(156, 15, 15);
+  --text-color-light: rgb(241, 210, 179);
+  --text-color-dark: black;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -13,8 +25,8 @@ body {
 }
 
 header {
-  color: white;
-  background-color: rebeccapurple;
+  color: var(--text-color-light);
+  background-color: var(--primary-color);
 
   grid-column: 1 / span 2;
 
@@ -30,6 +42,8 @@ button {
 dialog {
   margin: auto;
   padding: 20px;
+  background-color: var(--project-color-active);
+  color: var(--text-color-dark);
 }
 
 dialog::backdrop {
@@ -40,6 +54,11 @@ dialog::backdrop {
 dialog>div {
   display: flex;
   flex-direction: column;
+}
+
+dialog>div>form>input,
+dialog>div>form>textarea {
+  background-color: var(--input-color);
 }
 
 dialog>div>button {
@@ -66,6 +85,7 @@ dialog>div>form>button {
   margin-top: 10px;
   padding: 5px;
   border-radius: 5px;
+  background-color: var(--input-color);
 
   align-self: center;
 }
@@ -91,14 +111,14 @@ header,
   padding: 5px;
   border-radius: 5px;
   color: white;
-  background-color: red;
+  background-color: var(--delete-button-color);
 
   align-self: center;
 }
 
 #sidebar {
   min-width: 380px;
-  background-color: pink;
+  background-color: var(--secondary-color);
 
   grid-row: 2 / span 1;
 
@@ -109,6 +129,7 @@ header,
 
 #sidebar>h2 {
   font-size: 1.8em;
+  color: var(--text-color-light);
 }
 
 li+li {
@@ -119,8 +140,8 @@ li+li {
   padding: 10px;
   border-radius: 5px;
   font-size: 1.3em;
-  color: white;
-  background-color: rebeccapurple;
+  color: var(--text-color-dark);
+  background-color: var(--project-color);
   cursor: pointer;
 
   display: flex;
@@ -145,7 +166,7 @@ li+li {
 }
 
 .project-card.project-card-active {
-  background-color: darkmagenta;
+  background-color: var(--project-color-active);
 }
 
 #add-project-button,
@@ -154,13 +175,14 @@ li+li {
   height: 30px;
   border-radius: 15px;
   font-size: 1em;
+  background-color: var(--input-color);
 
   align-self: center;
 }
 
 #project-content {
   min-width: 800px;
-  background-color: beige;
+  background-color: var(--content-color);
 
   grid-row: 2 / span 1;
 
@@ -206,8 +228,8 @@ li+li {
 .task-checkbox {
   height: 25px;
   width: 25px;
-  background-color: white;
-  border: 1px solid black;
+  background-color: var(--input-color);
+  border: 1px solid var(--primary-color);
 
   grid-row: 1 / span 2;
 
