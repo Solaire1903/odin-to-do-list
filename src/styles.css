@@ -44,6 +44,7 @@ dialog>div {
 
 dialog>div>button {
   display: flex;
+  background-color: inherit;
 
   align-self: end;
 }
@@ -57,6 +58,27 @@ dialog>div>form {
   display: flex;
   flex-direction: column;
   gap: 5px;
+}
+
+dialog>div>form>button {
+  height: 30px;
+  width: 60px;
+  margin-top: 10px;
+  padding: 5px;
+  border-radius: 5px;
+
+  align-self: center;
+}
+
+#delete-project-button,
+#delete-task-button {
+  margin-top: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
+  background-color: red;
+
+  align-self: center;
 }
 
 #sidebar {
@@ -117,7 +139,7 @@ li+li {
   height: 30px;
   border-radius: 15px;
   font-size: 1em;
-  
+
   align-self: center;
 }
 
@@ -131,6 +153,15 @@ li+li {
   flex-direction: column;
   align-items: center;
   gap: 15px;
+}
+
+#task-priority-input,
+#edit-task-priority-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 5px;
 }
 
 .task-card {
